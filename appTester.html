@@ -193,7 +193,6 @@
         #nav-menu>li>ul>li>a:hover {
             font-weight: bolder;
         }
-      test
 
 
        
@@ -202,11 +201,67 @@
        #appTester-wrap {
            padding-top: 130px;
            width: 100%;
-           height: 1200px;
+           height: 1000px;
            background: url(https://cdn.dribbble.com/users/1345092/screenshots/9976485/media/9a6b5b4b54f25fe77fe9cb14a646aec4.png) no-repeat center;
            background-size: cover;
        }
 
+       .appTester-title {
+           padding-top: 1em;
+           text-align: center;
+           font-weight: bold;
+           color: white;
+           font-size: 2em;
+           background-color: #333;
+           opacity: 80%;
+           line-height: 1.5em;
+           text-shadow: 4px 2.5px #000;
+       }
+       .appTester-content {
+           padding-top: 2em;
+           text-align: center;
+           font-size: 2em;
+           line-height: 2.5em;
+           text-shadow: 4px 2.5px #F5F5F5;
+       }
+
+       .appTester-form {
+            padding-top: 15em;
+            display: flex;
+            justify-content: right;
+        }
+
+        .form-box {
+            padding-right: 4em;
+        }
+
+        .form-box form {
+            background-color: #fff;
+            height: 55px;
+            border-radius: 30px;
+            box-shadow: 4px 2.5px #333; 
+            padding-left: 1em;
+        }
+        .form-box button {
+            color: white;
+            margin-left: 0.4em;
+            margin-top: 0.3em;
+            width: 5.2em;
+            height: 45px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 30px;
+            background-color: #6CD3B8;
+        }
+
+        .form-box input {
+            border-style: none;
+            height: 2.5em;
+        }
+
+        .form-box h2 {
+            text-shadow: 4px 2.5px #fff; 
+        }
 
         /* footer */
         footer {
@@ -313,24 +368,26 @@
         </section>
         <main>
             <section id="appTester-wrap">
-                <div>
+                <div class="appTester-title">
                     <h3>신청 종료까지 <br>
                         남은 시간</h3>
                         <div id="count-time"></div>
                 </div>
                 <div>
-                    <div>
+                    <div class="appTester-content">
                         <h2>BalanceDiary 애플리케이션 <br>
                             테스트버전에 참가해주실 분을 찾습니다.
                         </h2> 
                     </div>
-                    <div>
-                        <h2>회원가입 없이 간편하게 <br>
-                            이메일만으로 신청하세요 ></h2>
-                            <form action="#">
-                                <input type="text" name="appTester-email"> 
-                                <button>신청 ></button>
-                            </form>
+                    <div class="appTester-form">
+                        <div class="form-box">
+                            <h2>회원가입 없이 간편하게 <br>
+                                이메일만으로 신청하세요 ></h2>
+                                <form action="#">
+                                    <input type="text" name="appTester-email" placeholder="이메일을 입력해주세요."> 
+                                    <button>신청 ></button>
+                                </form>
+                            </div>
                     </div>
                 </div>
             </section>
@@ -377,7 +434,7 @@
     </div>
 
     <script>
-       let countDownDate = new Date("12 30, 2021, 02:00:00")
+       let countDownDate = new Date("04 30, 2022, 02:00:00")
 
         let conDownFuntion = setInterval(() => {
             let now = new Date().getTime();
@@ -389,11 +446,11 @@
             let minutes = Math.floor((distance % (1000*60*60))/(1000*60));
             let secounds = Math.floor((distance % (1000*60))/(1000));
 
-            document.getElementById("count-time").innerText = `${days}d ${hours}h ${minutes}m ${secounds}s`;
+            document.getElementById("count-time").innerText = `${days}일 ${hours}시 ${minutes}분 ${secounds}초`;
 
             if(distance < 0){
                 clearInterval(countDownDate);
-                document.getElementById("count-time").innerHTML = "종료"
+                document.getElementById("count-time").innerHTML = "모집 마감. 참여해주셔서 감사합니다."
             }
         }, 1000);
     </script>

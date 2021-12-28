@@ -27,22 +27,26 @@
         cursor: default;
         }
         .my-calendar .clicked-date {
-        border-radius: 25px;
-        margin-top: 36px;
-        width: 42%;
-        padding: 46px 0 26px;
-        background: #ddd;
+          width: 100%;
+          margin-top: 36px;
+          width: 42%;
+          padding: 46px 0 26px;
+          background: #ddd;
         }
         .my-calendar .calendar-box {
-        width: 100%;
-        padding-left: 30px;
+          width: 100%;
+          padding-left: 30px;
+        }
+        
+        .clicked-date .cal-date {
+        font-size: 30px;
+        }
+        .clicked-date .cal-day {
+          font-size: 30px;
         }
 
-        .clicked-date .cal-day {
-        font-size: 24px;
-        }
-        .clicked-date .cal-date {
-        font-size: 130px;
+        .clicked-date .cal-day::after {
+          content: " My Diary";
         }
 
         .ctr-box {
@@ -78,7 +82,9 @@
         .ctr-box .btn-cal.next:after {
         content: '>';
         }
-
+        tr > td:first-child{
+          color: red;
+        }
         .cal-table {
         width: 100%;
         }
@@ -125,10 +131,10 @@
             <div class="ctr-box clearfix">
               <button type="button" title="prev" class="btn-cal prev">
               </button>
-              <span class="cal-month"></span>
               <span class="cal-year"></span>
-              <!-- <span class="cal-day"></span>
-              <span class="cal-date"></span> -->
+              <span class="cal-month"></span>
+              <span class="cal-date"></span>
+              <span class="cal-day"></span>
               <button type="button" title="next" class="btn-cal next">
               </button>
             </div>
@@ -151,13 +157,15 @@
         <!-- // .my-calendar -->
       </div>
       <div class="clicked-date">
-        <div class="cal-day"></div>
-        <div class="cal-date"></div>
+        <span class="cal-year"></span>
+        <span class="cal-month"></span>
+        <span class="cal-date"></span>
+        <span class="cal-day"></span>
       </div>
     <script type="text/javascript">
 	const init = {
-  monList: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  dayList: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  monList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+  dayList: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
   today: new Date(),
   monForChange: new Date().getMonth(),
   activeDate: new Date(),
@@ -197,8 +205,15 @@ const $btnPrev = document.querySelector('.btn-cal.prev');
  * @param {number} dayIn
 */
 function loadDate (date, dayIn) {
-  document.querySelector('.cal-date').textContent = date;
-  document.querySelector('.cal-day').textContent = init.dayList[dayIn];
+  let calDates = document.querySelectorAll('.cal-date');
+  let calDays = document.querySelectorAll('.cal-day');
+  calDates.forEach(calDate => {
+      calDate.textContent = date+"일 ";
+  });
+  calDays.forEach(calDay => {
+      calDay.textContent = init.dayList[dayIn];
+  });
+
 }
 
 /**
@@ -215,8 +230,14 @@ function loadYYMM (fullDate) {
     markToday = init.today.getDate();
   }
 
-  document.querySelector('.cal-month').textContent = init.monList[mm];
-  document.querySelector('.cal-year').textContent = yy;
+   let calYears = document.querySelectorAll('.cal-year');
+   calYears.forEach(year => {
+     year.textContent = yy+"년";
+   });
+   let calMonths = document.querySelectorAll('.cal-month');
+   calMonths.forEach(month => {
+     month.textContent = init.monList[mm];
+   });
 
   let trtd = '';
   let startCount;

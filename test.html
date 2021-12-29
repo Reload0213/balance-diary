@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="format.css">
     <title>Document</title>
     <style>
+      /* ======== Calendar ======== */
         *, *:before, *:after {
         box-sizing: inherit;
         }
@@ -17,7 +18,6 @@
         float: none;
         }
 
-        /* ======== Calendar ======== */
         .my-calendar {
         width: 100%;
         padding: 20px 20px 10px;
@@ -26,28 +26,63 @@
         border: 1px solid #ddd;
         cursor: default;
         }
-        .my-calendar .clicked-date {
+        .today-diary {
           width: 100%;
+          text-align: center;
+          background-color: antiquewhite;
           margin-top: 36px;
-          width: 42%;
           padding: 46px 0 26px;
-          background: #ddd;
+          font-size: 30px;
         }
         .my-calendar .calendar-box {
           width: 100%;
           padding-left: 30px;
         }
-        
-        .clicked-date .cal-date {
-        font-size: 30px;
+
+        .today-diary .cal-day::after {
+          content: " 나의 영양 일기";
         }
-        .clicked-date .cal-day {
+
+        .today-diary div {
+          background-color: #fff;
+          margin: 0.5em;
+        }
+
+        .today-diary label {
+          color: #fff;
+          display:inline-block;
+          text-align: center;
+          width: 120px;
+          padding-right: 0.4em;
+          height: 40px;
+          border-radius: 30px;
+          background-color: #C0AD87;
+        }
+
+        .today-diary-content {
+          display: flex;
+          justify-content: center;
+        }
+
+        .thismonth-diary {
+          width: 100%;
+          text-align: center;
+          background-color: #88B4C1;
+          margin-top: 36px;
+          padding: 46px 0 26px;
           font-size: 30px;
         }
 
-        .clicked-date .cal-day::after {
-          content: " My Diary";
+        .thismonth-diary-graph {
+          display: flex;
+          justify-content: center;
         }
+
+        .thismonth-diary-graph div{
+          background-color: #fff;
+          margin: 1em;
+        }
+
 
         .ctr-box {
         padding: 0 16px;
@@ -125,7 +160,6 @@
     </style>
 </head>
 <body>
-    <div class="container">
         <div class="my-calendar clearfix">
           <div class="calendar-box">
             <div class="ctr-box clearfix">
@@ -156,13 +190,60 @@
         </div>
         <!-- // .my-calendar -->
       </div>
-      <div class="clicked-date">
-        <span class="cal-year"></span>
-        <span class="cal-month"></span>
-        <span class="cal-date"></span>
-        <span class="cal-day"></span>
-      </div>
-    <script type="text/javascript">
+      <article class="today-diary">
+            <h2>
+              <span class="cal-year"></span>
+              <span class="cal-month"></span>
+              <span class="cal-date"></span>
+              <span class="cal-day"></span>
+            </h2>
+            <h4>선택하면 누른 해당 끼니까지의 그래프를 확인 할 수 있어요.</h4>
+            <label for="morning-btn"><input type="checkbox" name="morning-btn" id="mornin-btn">아침</label>
+            <label for="lunch-btn"><input type="checkbox" name="lunch-btn" id="lunch-btn">점심</label>
+            <label for="dinner-btn"><input type="checkbox" name="dinner-btn" id="dinner-btn">저녁</label>
+            <label for="snack-btn"><input type="checkbox" name="snack-btn" id="snack-btn">간식</label>
+            <label for="midnight-btn"><input type="checkbox" name="midnight-btn" id="midnight-btn">야식</label>
+            <article class="today-diary-content">
+              <article class="today-diary-grape">
+                  <div>원그래프</div>
+                  <div>
+                    <ul>
+                      <li>총 섭취 열량</li>
+                      <li>탄수화물</li>
+                      <li>단백질</li>
+                      <li>지방</li>
+                      <li>나트륨</li>
+                    </ul>
+                  </div>
+              </article>
+              <div>
+                <ul>
+                  <li>1. 돼지갈비찜 0.6인분(521 kcal</li>
+                  <li>2. 공기밥 0.6인분(293 kcal</li>
+                  <li>3. 스니커즈 아몬드 0.6인분(230 kcal</li>
+                  <li>4 .감자칩 0.5봉지(142 kcal</li>
+                  <li>5. 김치 1 앞 접시 0.6인분(15 kcal</li>
+                </ul>
+              </div>
+            </article>
+        </article>
+
+        <article class="thismonth-diary">
+          <h2><span class="cal-year"></span><span class="cal-month"></span> 나의 평균 영양 섭취</h2>
+          <article class="thismonth-diary-graph">
+            <div>원그래프</div>
+            <div>
+              <ul>
+                <li>총 섭취 열량</li>
+                <li>탄수화물</li>
+                <li>단백질</li>
+                <li>지방</li>
+                <li>나트륨</li>
+              </ul>
+            </div>
+        </article>
+        <script type="text/javascript">
+  // calandar
 	const init = {
   monList: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
   dayList: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
@@ -232,7 +313,7 @@ function loadYYMM (fullDate) {
 
    let calYears = document.querySelectorAll('.cal-year');
    calYears.forEach(year => {
-     year.textContent = yy+"년";
+     year.textContent = yy+"년 ";
    });
    let calMonths = document.querySelectorAll('.cal-month');
    calMonths.forEach(month => {
@@ -257,6 +338,10 @@ function loadYYMM (fullDate) {
         trtd += ` data-date="${countDay + 1}" data-fdate="${fullDate}">`;
       }
       trtd += (startCount) ? ++countDay : '';
+      // ************ 데이터 삽입 **************
+      // trtd += '<div>탄</div>';
+      // trtd += '<div>단</div>';
+      // trtd += '<div>지</div>';
       if (countDay === lastDay.getDate()) { 
         startCount = 0; 
       }

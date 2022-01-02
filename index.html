@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <!-- swiper -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-      
+    
+    <!-- Kakao Map API Key -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb642196967940a216f068364435eabe&libraries=services"></script>
+
     <!-- https://fontawesome.com/start -->
     <script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
     <!-- default css -->
@@ -837,8 +841,6 @@
         </footer>
     </div>
     
-    <!-- Kakao Map API Key -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bb642196967940a216f068364435eabe&libraries=services"></script>
     <script>
         // offline-map
         var mapContainer = document.getElementById('offline-map'),
@@ -994,23 +996,23 @@
 
 
         // 상단 바로가기 사이드 배너
-        $(function() {
-        var $w = $(window),
-        footerHei = $('footer').outerHeight(),
-        $banner = $('#banner');
+        // $(function() {
+        // var $w = $(window),
+        // footerHei = $('footer').outerHeight(),
+        // $banner = $('#banner');
 
-        $w.on('scroll', function() {
+        // $w.on('scroll', function() {
 
-        var sT = $w.scrollTop();
-        var val = $(document).height() - $w.height() - footerHei;
+        // var sT = $w.scrollTop();
+        // var val = $(document).height() - $w.height() - footerHei;
 
-        if (sT >= val)
-            $banner.addClass('on')
-        else
-                $banner.removeClass('on')
+        // if (sT >= val)
+        //     $banner.addClass('on')
+        // else
+        //         $banner.removeClass('on')
 
-            });
-        });
+        //     });
+        // });
 
 
     </script>

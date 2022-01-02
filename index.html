@@ -493,6 +493,7 @@
         width: 50px;
         height: 100px;
         background: #215190;
+        display: none;
         box-shadow: 0 0 10px rgba(0, 0, 0, .6);
         }
 
@@ -879,13 +880,15 @@
 
             document.getElementById("top-menu").style.backgroundColor = "teal";
             document.getElementById("top-nav").style.backgroundColor = "#F5F5F5";
-
+            document.getElementById("banner").style.display = "block";
+            
             for (const nText of navText) {
                 nText.style.color = "#464646";
             };
         } else {
             document.getElementById("top-menu").style.backgroundColor = "";
             document.getElementById("top-nav").style.backgroundColor = "";
+            document.getElementById("banner").style.display = "none";
             for (const nText of navText) {
                 nText.style.color = "";
             };
@@ -996,23 +999,23 @@
 
 
         // 상단 바로가기 사이드 배너
-        // $(function() {
-        // var $w = $(window),
-        // footerHei = $('footer').outerHeight(),
-        // $banner = $('#banner');
+        $(function() {
+        var $w = $(window),
+        footerHei = $('footer').outerHeight(),
+        $banner = $('#banner');
 
-        // $w.on('scroll', function() {
+        $w.on('scroll', function() {
 
-        // var sT = $w.scrollTop();
-        // var val = $(document).height() - $w.height() - footerHei;
+        var sT = $w.scrollTop();
+        var val = $(document).height() - $w.height() - footerHei;
 
-        // if (sT >= val)
-        //     $banner.addClass('on')
-        // else
-        //         $banner.removeClass('on')
+        if (sT >= val)
+            $banner.addClass('on')
+        else
+                $banner.removeClass('on')
 
-        //     });
-        // });
+            });
+        });
 
 
     </script>

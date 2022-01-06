@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="format.css">
+    <style>
+
+        /* hamburger-menu */
+
+        
+        nav {
+            margin: 0 auto;
+        }
+
+        nav .hamburger_menu {
+            position: fixed;
+            text-align: center;
+            z-index: 101;
+            left: -300px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+            -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+            -webkit-transition: left 0.5s ease-out;
+            transition: left 0.5s ease-out;
+        }
+
+        nav .hamburger_menu.on {
+                left: 0;
+            }
+
+        a.h-close-btn {
+            position: relative;
+            z-index: 101;
+            top: 0;
+            margin: 50px 0 0 150px;
+            width: 40px;
+            height: 40px;
+            line-height: 0;
+        }
+
+        nav .hamburger_menu .logo {
+            margin-top: 100px;
+        }
+
+        nav .hamburger_menu .logo a {
+            text-decoration: none;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.125em;
+            font-weight: 600;
+            color: #555;
+        }
+
+        nav .hamburger_menu ul {
+            z-index: 101;
+            margin-top: 50px;
+        }
+
+        nav .hamburger_menu ul li {
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        nav .hamburger_menu ul li a {
+            text-decoration: none;
+            font-size: 1em;
+            color: #555;
+        }
+
+        nav .hamburger_menu li a:hover {
+            font-weight: bold;
+        }
+
+        .overlay {
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .5);
+            -webkit-transition: left 0.5s ease-out;
+            transition: left 0.5s ease-out;
+        }
+
+        .open_status .container {
+            margin-left: 300px;
+        }
+
+        .open_status .overlay {
+            top: 0;
+            left: 250px;
+        }
+
+        .open_status .menu_btn {
+            background-position: -41px 0;
+        }
+
+
+        /* acodian menu */
+        .title {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #555;
+        }
+
+        .container {
+            margin-top: 35px;
+        }
+
+        nav {
+            font-size: 0.875em;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            list-style: none;
+            text-indent: 10px;
+        }
+
+        .menu {
+            margin-bottom: 3px;
+            background-color: #F5F5F5;
+        }
+        
+        .menu .main {
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            text-indent: 20px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        
+        .menu .main.on {
+            background-color: antiquewhite;
+        }
+        
+        .menu .sub {
+            display: none;
+        }
+        
+        .menu .sub li {
+            height: 35px;
+            line-height: 35px;
+        }
+        
+        .menu .sub li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .menu .sub li a:hover {
+            background: #eaeaea;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div><a href="#" class="h-open-btn">open</a></div>
+    <div class="hamburger-container">
+            <nav>
+                <div class="hamburger_menu">
+                    <a href="#" class="h-close-btn">close</a>
+                    <div class="logo"><a href="#">BalanceDiary</a></div>
+                    <ul>
+                        <li class="menu">
+                            <a class="main" href="#">회사 소개</a>
+                            <ul class="sub">
+                                <li><a href="#">구상 계기</a></li>
+                                <li><a href="#">발전 계획</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu">
+                            <a class="main" href="#">식단가이드</a>
+                            <ul class="sub">
+                                <li><a href="#">다이어트 + 근육 증가</a></li>
+                                <li><a href="#">단순 체중 감량</a></li>
+                                <li><a href="#">체중 + 근육 증량</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu">
+                            <a class="main" href="#">Information</a>
+                            <ul class="sub">
+                                <li><a href="#">자주 묻는 질문 Q&A</a></li>
+                                <li><a href="#">BalanceDiary 추천 레서피</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">우리들의 Diary</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                </div>
+            </nav>
+        <div class="overlay"></div>
+    </div>
+    <script>
+        // hamburger-nav
+        $(function () {
+            const $body = $("body");
+            const $container = $(".container");
+            const $openBtn = $(".h-open-btn");
+            const $closeBtn = $(".h-close-btn");
+            const $menu = $(".hamburger_menu");
+            const $overlay = $(".overlay");
+            
+            $("a[href$='#']").on("click", function(e){
+                e.preventDefault();
+            });
+
+            $openBtn.on("click",function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }else{
+                    toggleMenu("open");
+                }
+            });
+
+            $closeBtn.on("click",function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }else{
+                    toggleMenu("open");
+                }
+            });
+
+            $overlay.on("click", function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }
+            });
+
+            function toggleMenu(str){
+                if(str == "open"){
+                    $body.addClass("open_status");
+                    $menu.addClass("on");
+                }
+                if(str == "close"){
+                    $body.removeClass("open_status");
+                    $menu.removeClass("on");
+                }
+            }
+        });
+
+        // acodian-nav
+
+        $(function () {
+            $(".sub").hide();
+
+            $(".main").on("click",function(){
+                if(!($(this).hasClass("on"))){
+                    $(".main").removeClass("on");
+                    $(this).addClass("on");
+                    $(".sub").slideUp("fast");
+                    $(this).next().slideDown("fast");
+                }else{
+                    $(this).removeClass("on");
+                    $(this).next().slideUp("fast");
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

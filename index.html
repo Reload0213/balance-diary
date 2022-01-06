@@ -38,8 +38,18 @@
         }
         
         a {
+            -webkit-transition: all 0.1s linear;
+            transition: all 0.1s linear;
             text-decoration: none;
             color: #333;
+        }
+
+        a:hover {
+            -webkit-transform: scale(1.05);
+            -moz-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            -o-transform: scale(1.05);
+            transform: scale(1.05);
         }
 
         #container {
@@ -56,9 +66,151 @@
             height: 200px;
             position: fixed;
             top: 0;
-            z-index: 100;
+            z-index: 200;
         }
 
+                /* hamburger-menu */
+
+        
+        nav {
+            margin: 0 auto;
+        }
+
+        nav .hamburger_menu {
+            position: fixed;
+            text-align: center;
+            z-index: 300;
+            left: -300px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+            -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+            -webkit-transition: left 0.5s ease-out;
+            transition: left 0.5s ease-out;
+        }
+
+        nav .hamburger_menu.on {
+                left: 0;
+            }
+
+        a.h-close-btn {
+            position: relative;
+            z-index: 101;
+            top: 0;
+            margin: 50px 0 0 150px;
+            width: 40px;
+            height: 40px;
+            line-height: 0;
+        }
+
+        nav .hamburger_menu .logo {
+            margin-top: 100px;
+        }
+
+        nav .hamburger_menu .logo a {
+            text-decoration: none;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.125em;
+            font-weight: 600;
+            color: #555;
+        }
+
+        nav .hamburger_menu ul {
+            z-index: 101;
+            margin-top: 50px;
+        }
+
+        nav .hamburger_menu ul li {
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        nav .hamburger_menu ul li a {
+            text-decoration: none;
+            font-size: 1em;
+            color: #555;
+        }
+
+        nav .hamburger_menu li a:hover {
+            font-weight: bold;
+        }
+
+        .overlay {
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            -webkit-transition: left 0.5s ease-out;
+            transition: left 0.5s ease-out;
+        }
+
+        .open_status .container {
+            margin-left: 300px;
+        }
+
+        .open_status .overlay {
+            top: 0;
+            left: 250px;
+        }
+
+        .open_status .menu_btn {
+            background-position: -41px 0;
+        }
+
+
+        /* acodian menu */
+
+        .title {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #555;
+        }
+
+        .menu {
+            background-color: #F5F5F5;
+        }
+        
+        .menu .main {
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            text-indent: 20px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+            background-color: #fff;
+        }
+
+        .menu .main.on {
+            background-color: antiquewhite;
+        }
+        
+        .menu .sub {
+            display: none;
+        }
+        
+        .menu .sub li {
+            height: 35px;
+            line-height: 35px;
+        }
+        
+        .menu .sub li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .menu .sub li a:hover {
+            background: #eaeaea;
+            color: #333;
+        }
 
         /* header top-menu */
 
@@ -78,7 +230,7 @@
             color: white;
         }
         #top-menu a h1 {
-            padding-left: 6em;
+            padding-left: 4em;
             color: white;
         }
 
@@ -121,31 +273,40 @@
 
         #nav-menu>li>a:hover {
             color: #000;
-            text-shadow: 0 -1px rgb(39, 79, 212);
+            text-shadow: 0 -1px rgb(219, 219, 219);
         }
-
+        
         #nav-menu>li>ul {
             display: none;
             position: absolute;
             width: 200px;
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(230, 225, 225, 0.6);
             left: 55px;
             margin: 0;
         }
-
+        
         #nav-menu>li>ul>li>a {
             font-size: 0.85rem;
+            /* -webkit-transition: all 0.1s linear;
+            transition: all 0.1s linear; */
+            font-weight: bold;
             padding: 10px;
             color: #000;
         }
-
+        
         #nav-menu>li:hover>ul {
             display: block;
             z-index: 10;
         }
-
+        
         #nav-menu>li>ul>li>a:hover {
             font-weight: bolder;
+            /* -webkit-transform: scale(1.05);
+            -moz-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            -o-transform: scale(1.05);
+            transform: scale(1.05); */
+            text-shadow: 0 -1px rgb(219, 219, 219);
         }
         
         /* 재생바 */
@@ -215,6 +376,27 @@
             border-bottom: 2px solid #333;
         }
 
+        .personalization-btn {
+            position: absolute;
+
+        }
+
+        .personalization-btn a{
+            color: black;
+            width: 5.2em;
+            margin-top: 5em;
+            padding-top: 0.4em;
+            opacity: 50%;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 30px;
+            background-color: #F5F5F5;
+        }
+
+        .personalization-btn a:hover {
+            opacity: 100%;
+        }
+
         /* slide-tab */
         #prev-btn {
             position: absolute;
@@ -242,7 +424,6 @@
         
         .bgvid{
             display: none;
-            /* position: absolute; */
             min-width: 100%; 
             z-index: -100;
         }
@@ -356,6 +537,11 @@
         .collabo-title {
             text-align: center;
         }
+
+        .collabo-title p {
+            padding: 2em;
+        }
+
         .collabo-cards {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
@@ -396,13 +582,24 @@
             text-align: center;
             background: url(https://cdn.dribbble.com/users/1345092/screenshots/9976485/media/9a6b5b4b54f25fe77fe9cb14a646aec4.png) no-repeat center;
             background-size: cover;
-        }
-
-        .app-tester-wrap {
-            text-shadow: 0 2.5px whitesmoke;
+            text-shadow: 0 2px whitesmoke;
             padding-top: 4em;
+            position: relative;
+            flex-direction: column;
             line-height: 2.5em;
             font-size: 1.5em;
+        }
+
+        .app-tester-btn a{
+            color: black;
+            margin-top: 16em;
+            width: 8em;
+            color: #F5F5F5;
+            align-items: flex-end;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 30px;
+            background-color: #215190;
         }
 
 
@@ -542,8 +739,7 @@
         <header>
                 <section id="top-area">
                     <section id="top-menu">   
-                    <div>
-                    </div>
+                        <div><a href="#" class="h-open-btn">open</a></div>
                     <div><a href=""><h1>BalanceDiary</h1></a></div>
                     <div class="top-side">
                         <div><a href="">다이어리</a></div>
@@ -576,60 +772,96 @@
                     </ul>
                 </nav>
             </section>
+            <div class="hamburger-container">
+                <nav>
+                    <div class="hamburger_menu">
+                        <a href="#" class="h-close-btn">close</a>
+                        <div class="logo"><a href="#">BalanceDiary</a></div>
+                            <ul>
+                                <li class="menu">
+                                    <a class="main" href="#">회사 소개</a>
+                                    <ul class="sub">
+                                        <li><a href="#">구상 계기</a></li>
+                                        <li><a href="#">발전 계획</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu">
+                                    <a class="main" href="#">식단가이드</a>
+                                    <ul class="sub">
+                                        <li><a href="#">다이어트 + 근육 증가</a></li>
+                                        <li><a href="#">단순 체중 감량</a></li>
+                                        <li><a href="#">체중 + 근육 증량</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu">
+                                    <a class="main" href="#">Information</a>
+                                    <ul class="sub">
+                                        <li><a href="#">자주 묻는 질문 Q&A</a></li>
+                                        <li><a href="#">BalanceDiary 추천 레서피</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">우리들의 Diary</a></li>
+                                <li><a href="#">고객센터</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                <div class="overlay"></div>
+            </div>
             <section class="content-area">
                 <div class="tab-content-box">
                     <div id="lean-mass-up" class="tab-content" style="display: block">
-                            <h2>당신은 어떤 식단을 원하십니까?</h2>
-                            <h1>탄탄하고 건강미 넘치는 몸을 가꾸고 싶나요?</h1>
-                            <p>바쁜 생활 혹은 잘못된 습관으로 인해 나도 모르게 불어난 몸을 바꾸고 싶어 운동을 시작했으나, 맘처럼 변화가 없거나 작은 변화가 있었지만 그것도 잠시 다시 제자리걸음인 것만 같아 고민이시지 않은가요?</p><br>
-                            <p>건강한 체중감량을 통해 날씬하고 탄탄한 몸을 만드는 식단을 함께 알아보러 가보실까요?</p>
-                        </div>
-                        
-                        <div id="diet" class="tab-content">
-                            <h2>당신은 어떤 식단을 원하십니까?</h2>
-                            <h1>늘어난 뱃살, 운동할 시간은 부족하고<br> 식단을 통해 체중감량을 하고 싶으신가요?</h1>
-                            <p>오랜 기간 잘못된 식습관으로 인해 늘어난 체중 때문에 늘 고민하고 먹고싶은 것을 참아도 보고 
-                        굶어봐도 금방 제자리인 몸무게에 힘들어 하고 계신가요?</p><br>
-                        <p>이대로는 건강조차 헤칠수 있습니다. 먹지않고 굶는 것은 결국 단기적일뿐, 건강한 식습관을 통해 이젠 굶지 않고 챙겨먹으면서
-                            날씬한 몸을 만드는 식단을 함께 알아보러 가보실까요?</p>
-                        </div>
-                        
-                        <div id="bulk-up" class="tab-content">
-                            <h2>당신은 어떤 식단을 원하십니까?</h2>
-                            <h1>왜소한 체형에서 이제 그만<br> 건장하고 큰 골격의 멋진 몸으로 바뀌고 싶나요?</h1>
-                            <p>어릴적부터 외소해서 아무리 열심히 운동을 하고, 뭐든지 잘챙겨먹는데도 불구하고 성장하지 않는 몸에 스트레스 받고, 남들이 항상
-                                너무 이렇게나 잘먹는데 어떻게 이렇게 말랐냐는 소리를 듣지는 않으신가요?</p><br>
-                                <p>지금부터 조금만 식습관을 바꾸고, 개선하면 건장하고 멋진 몸으로 거듭날 수 있습니다. 우리 함께 알아보러 가보실까요?</p>
+                        <h2>당신은 어떤 식단을 원하십니까?</h2>
+                        <h1>탄탄하고 건강미 넘치는 몸을 가꾸고 싶나요?</h1>
+                        <p>바쁜 생활 혹은 잘못된 습관으로 인해 나도 모르게 불어난 몸을 바꾸고 싶어 운동을 시작했으나, 맘처럼 변화가 없거나 작은 변화가 있었지만 그것도 잠시 다시 제자리걸음인 것만 같아 고민이시지 않은가요?</p><br>
+                        <p>건강한 체중감량을 통해 날씬하고 탄탄한 몸을 만드는 식단을 함께 알아보러 가보실까요?</p>
+                    </div>
+                    
+                    <div id="diet" class="tab-content">
+                        <h2>당신은 어떤 식단을 원하십니까?</h2>
+                        <h1>늘어난 뱃살, 운동할 시간은 부족하고<br> 식단을 통해 체중감량을 하고 싶으신가요?</h1>
+                        <p>오랜 기간 잘못된 식습관으로 인해 늘어난 체중 때문에 늘 고민하고 먹고싶은 것을 참아도 보고 
+                            굶어봐도 금방 제자리인 몸무게에 힘들어 하고 계신가요?</p><br>
+                            <p>이대로는 건강조차 헤칠수 있습니다. 먹지않고 굶는 것은 결국 단기적일뿐, 건강한 식습관을 통해 이젠 굶지 않고 챙겨먹으면서
+                                날씬한 몸을 만드는 식단을 함께 알아보러 가보실까요?</p>
                             </div>
-                        <button id="prev-btn"><i class="fas fa-chevron-circle-left"></i></button>
-                        <button id="next-btn"><i class="fas fa-chevron-circle-right"></i></button>
-                   </div>
-                <video autoplay loop muted class="bgvid">
-                    <source src="video/lean-mass-up.mp4" type="video/mp4">
-                </video>
-                <video autoplay loop muted class="bgvid">
-                    <source src="video/diet.mp4" type="video/mp4">
-                </video>
-                <video autoplay loop muted class="bgvid">
-                    <source src="video/bulk-up.mp4" type="video/mp4">
-                </video>
-            </section>
-                <div class="progress">
-                    <div class="progress__filled"></div>
-                </div>
-                <div class="tab-menu">
+                            
+                            <div id="bulk-up" class="tab-content">
+                                <h2>당신은 어떤 식단을 원하십니까?</h2>
+                                <h1>왜소한 체형에서 이제 그만<br> 건장하고 큰 골격의 멋진 몸으로 바뀌고 싶나요?</h1>
+                                <p>어릴적부터 외소해서 아무리 열심히 운동을 하고, 뭐든지 잘챙겨먹는데도 불구하고 성장하지 않는 몸에 스트레스 받고, 남들이 항상
+                                    너무 이렇게나 잘먹는데 어떻게 이렇게 말랐냐는 소리를 듣지는 않으신가요?</p><br>
+                                    <p>지금부터 조금만 식습관을 바꾸고, 개선하면 건장하고 멋진 몸으로 거듭날 수 있습니다. 우리 함께 알아보러 가보실까요?</p>
+                            </div>
+                                <button id="prev-btn"><i class="fas fa-chevron-circle-left"></i></button>
+                                <button id="next-btn"><i class="fas fa-chevron-circle-right"></i></button>
+                                <div class="personalization-btn"><a href="#">이동</a></div>
+                            </div>
+                            <video autoplay loop muted class="bgvid">
+                                <source src="video/lean-mass-up.mp4" type="video/mp4">
+                            </video>
+                            <video autoplay loop muted class="bgvid">
+                                <source src="video/diet.mp4" type="video/mp4">
+                            </video>
+                            <video autoplay loop muted class="bgvid">
+                                <source src="video/bulk-up.mp4" type="video/mp4">
+                            </video>
+                        </section>
+                        <div class="progress">
+                            <div class="progress__filled"></div>
+                        </div>
+                        <div class="tab-menu">
                       <ul class="tab-menu-list">
                           <li>
                               <a href="#lean-mass-up" class="tab-btn is_on" data-num ="0">다이어트 + 근육 증가</a>
                             </li>
                             <li>
-                              <a href="#diet" class="tab-btn" data-num ="1">단순 체중 감량</a>
-                          </li>
+                                <a href="#diet" class="tab-btn" data-num ="1">단순 체중 감량</a>
+                            </li>
                           <li>
                               <a href="#bulk-up" class="tab-btn" data-num ="2">체중 + 근육 증량</a>
-                          </li>      
-                      </ul>
-                  </div>
+                            </li>      
+                        </ul>
+                    </div>
         </header>
         <main>
             <p class="blank"></p>
@@ -742,6 +974,7 @@
                     <h2>여러분들의 식단관리를 함께 할 BalanceDiary가 <br>
                         모바일앱으로도 개발 중에 있습니다. 초기 버전부터 함께 해주실<br>
                         베타 테스터분들을 모집 중 입니다. </h2>
+                    <div class="app-tester-btn"><a href="#">신청하러 가기</a></div>
                 </article>
             </section>    
             <p class="blank"></p>
@@ -983,6 +1216,70 @@
 
         });
 
+                // hamburger-nav
+                $(function () {
+            const $body = $("body");
+            const $container = $(".container");
+            const $openBtn = $(".h-open-btn");
+            const $closeBtn = $(".h-close-btn");
+            const $menu = $(".hamburger_menu");
+            const $overlay = $(".overlay");
+            
+            $("a[href$='#']").on("click", function(e){
+                e.preventDefault();
+            });
+
+            $openBtn.on("click",function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }else{
+                    toggleMenu("open");
+                }
+            });
+
+            $closeBtn.on("click",function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }else{
+                    toggleMenu("open");
+                }
+            });
+
+            $overlay.on("click", function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }
+            });
+
+            function toggleMenu(str){
+                if(str == "open"){
+                    $body.addClass("open_status");
+                    $menu.addClass("on");
+                }
+                if(str == "close"){
+                    $body.removeClass("open_status");
+                    $menu.removeClass("on");
+                }
+            }
+        });
+
+        // acodian-nav
+
+        $(function () {
+            $(".sub").hide();
+
+            $(".main").on("click",function(){
+                if(!($(this).hasClass("on"))){
+                    $(".main").removeClass("on");
+                    $(this).addClass("on");
+                    $(".sub").slideUp("fast");
+                    $(this).next().slideDown("fast");
+                }else{
+                    $(this).removeClass("on");
+                    $(this).next().slideUp("fast");
+                }
+            });
+        })
 
     </script>
 </body>

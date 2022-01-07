@@ -69,11 +69,20 @@
             z-index: 200;
         }
 
-                /* hamburger-menu */
+        /* hamburger-menu */
 
         
         nav {
             margin: 0 auto;
+        }
+
+        .h-open-btn {
+            font-size: 2em;
+            display: none;
+        }
+
+        .h-close-btn {
+            font-size: 2em;
         }
 
         nav .hamburger_menu {
@@ -187,7 +196,7 @@
         }
 
         .menu .main.on {
-            background-color: antiquewhite;
+            font-weight: bold;
         }
         
         .menu .sub {
@@ -208,7 +217,6 @@
         }
 
         .menu .sub li a:hover {
-            background: #eaeaea;
             color: #333;
         }
 
@@ -219,7 +227,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 30px 0 100px;
+            padding: 0 30px 0 30px;
             width: 100%;
         }
 
@@ -230,7 +238,7 @@
             color: white;
         }
         #top-menu a h1 {
-            padding-left: 4em;
+            padding-left: 9em;
             color: white;
         }
 
@@ -261,6 +269,7 @@
 
         #nav-menu>li>a {
             display: block;
+            font-size: 0.95em;
             font-weight: bold;
             color: white;
             text-shadow: 0 1px black;
@@ -287,8 +296,6 @@
         
         #nav-menu>li>ul>li>a {
             font-size: 0.85rem;
-            /* -webkit-transition: all 0.1s linear;
-            transition: all 0.1s linear; */
             font-weight: bold;
             padding: 10px;
             color: #000;
@@ -301,15 +308,10 @@
         
         #nav-menu>li>ul>li>a:hover {
             font-weight: bolder;
-            /* -webkit-transform: scale(1.05);
-            -moz-transform: scale(1.05);
-            -ms-transform: scale(1.05);
-            -o-transform: scale(1.05);
-            transform: scale(1.05); */
             text-shadow: 0 -1px rgb(219, 219, 219);
         }
         
-        /* 재생바 */
+        /* progressbar */
         .progress {
         flex: 10;
         position: relative;
@@ -330,15 +332,15 @@
 
 
         /* tab-menu */
-
         .tab-content {
             color: white;
             display: flex;
-            padding-top: 20%;
+            padding-top: 15%;
             text-align: center;
         }        
         .tab-content-box {
             width: 100%;
+            text-align: center;
             position: absolute;
         }
         
@@ -348,15 +350,18 @@
         
         .tab-content h1 {
             margin: auto;
-            width: 50%;
+            width: 80%;
+            font-size: 2vw;
+            text-shadow: 0 3px black;
             line-height: 2em;
             padding-bottom: 0.5em;
-            margin-bottom: 3em;
+            margin-bottom: 2em;
             border-bottom: 4px solid white;
         }
 
         .tab-content p {
             font-weight: bold;
+            font-size: 2vh;
         }
 
         .tab-menu .tab-menu-list{
@@ -376,25 +381,20 @@
             border-bottom: 2px solid #333;
         }
 
-        .personalization-btn {
-            position: absolute;
-
-        }
-
-        .personalization-btn a{
-            color: black;
-            width: 5.2em;
-            margin-top: 5em;
-            padding-top: 0.4em;
-            opacity: 50%;
-            font-size: 1.2em;
+        #personalization-btn{
+            color: white;
+            padding: 1em;
+            opacity: 80%;
             font-weight: bold;
             border-radius: 30px;
-            background-color: #F5F5F5;
+            font-size: 3vh;
         }
-
-        .personalization-btn a:hover {
-            opacity: 100%;
+        
+        #personalization-btn:hover {
+            background-color: #ECCEA0;
+            opacity: 80%;
+            text-shadow: 0 1px black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .6);
         }
 
         /* slide-tab */
@@ -424,9 +424,48 @@
         
         .bgvid{
             display: none;
-            min-width: 100%; 
+            position: relative;
+            width: 100%; 
             z-index: -100;
         }
+
+        /* Tablet-dynamic-header */
+        @media (max-width: 1024px) {
+            /* top-nav */
+            #top-nav {
+                display: none;
+            }
+
+            .h-open-btn {
+                display: block;
+            }
+
+            /* tab - content */
+            .tab-content h1 {
+                font-size: 1.4em;
+                margin-bottom: 0;
+            }
+
+            .tab-content p {
+                display: none;
+            }
+
+            #personalization-btn {
+                padding: 10px;
+            }
+        }
+
+        /* Mobile-dynaminc-header */
+
+        @media (max-width: 768px) {
+
+            /* tab-cotent */
+            .tab-content {
+                padding-top: 10%;
+            }
+
+        }
+
 
         /* main */
 
@@ -508,8 +547,9 @@
       /* rcm-recipe */
         .rem-recipe-wrap {
             width: 100%;
-            height: 800px;
+            height: 1000px;
             display: flex;
+            position: relative;
             flex-direction: column;
             justify-content: center;
             background: url(images/rem-bg.jpg) no-repeat center;
@@ -525,13 +565,46 @@
         }
         .rem-img-box {
             width: 80%;
+            padding-left: 8vw;
             border-radius: 30%;
             margin: auto;
         }
         .rem-img-box img {
+            width: 80%;
             border-radius: 30px;
             justify-content: center;
         }
+
+        .rem-content {
+            position: absolute;
+            top: 30%;
+            right: 5%;
+            background: #fff;
+            padding: 1vw;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        .rem-content p {
+            font-size: 1vw;
+        }
+
+        .rem-btn {
+            position: absolute;
+            color: black;
+            top: 70%;
+            right: 15%;
+            width: 12em;
+            padding: 1em;
+            margin-bottom: 5em;
+            color: #F5F5F5;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 30px;
+            background-color: #215190;
+        }
+
+
         
         /* collabo-card  */
         .collabo-title {
@@ -550,7 +623,7 @@
         }
         .collabo-card-img {
             position: absolute;
-            padding: 12em 0 0 2em;
+            padding: 12vw 0 0 2vw;
         }
         
         .collabo-card-img img{
@@ -595,7 +668,6 @@
             margin-top: 16em;
             width: 8em;
             color: #F5F5F5;
-            align-items: flex-end;
             font-size: 1.2em;
             font-weight: bold;
             border-radius: 30px;
@@ -624,11 +696,11 @@
             width: 80%;
             height: 400px;
             margin-left: -10%;
-            padding-right: 10em;
+            padding-right: 10vw;
             background: url("images/map-bg.jpg") no-repeat;
         }
         #offline-map {
-            width: 60%;
+            width: 80%;
             border-radius: 30px;
             height: 300px;
             margin: auto;
@@ -650,7 +722,7 @@
             padding-top: 5em;
         } 
 
-         
+         /* move-top  */
         #banner {
         position: fixed;
         right: 20px;
@@ -675,13 +747,87 @@
             color: white;
         }
 
+         /* Mobile-dynamic-main */
+        @media (max-width: 1024px) {
+            
+            /* recommend */
+            .rem-img-box {
+                width: 100%;
+                margin: 0;
+            }
+
+            .rem-img-box img {
+                width: 100%;
+            }
+
+            /* collobo */
+            .collabo-cards {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .collabo-card-img {
+                padding: 25vw 0 0 2vw;
+            }
+
+            /* offline */
+            .offline-map-bg2 {
+                margin-left: 2vw;
+                padding-right: 2vw;
+            }
+
+        }   
+           
+         /* Moblie-dynamic-main */
+        @media (max-width: 768px) {
+
+            /* recommend */
+            .rem-content {
+                top: 40%;
+                right: 10px;
+            }
+
+            .rem-btn {
+                right: 10px;
+                bottom: 10px;
+            }
+
+            /* collabo */
+            .collabo-cards {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+            }
+            
+            .collabo-card-img {
+                padding: 60vw 0 0 2vw;
+            }
+
+            /* offline */
+            .offline-wrap {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 200px;
+            }
+
+            .offline-content-wrap {
+                width: 100%;
+            }
+
+            .offline-map-bg1 {
+                width: 100%;
+            }
+            .offline-map-bg2 {
+                width: 100%;
+                margin: 4vw;
+            }
+        }
+
 
         /* footer */
         footer {
             width: 100%;
             background-color: #377E7F;
             color: #F5F5F5;
-            display: flex;
             display: flex;
         }
         .footer-logo {
@@ -707,11 +853,17 @@
         }
         .footer-nav {
             display: flex;
+            flex-wrap: wrap;
             font-weight: bold;
             padding-top: 2em;
             padding-right: 10em;
             justify-content: center;
         }
+
+        .footer-nav a {
+            color: #fff;
+        }
+
         .footer-aBox {
             display: grid;
             padding: 2em 5em;
@@ -732,6 +884,13 @@
             padding-right: 10em;
             text-align: center;
         }
+
+        /* Mobile-dynamic-footer */
+        @media (max-width: 768px) {
+            .footer-aBox {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -739,7 +898,7 @@
         <header>
                 <section id="top-area">
                     <section id="top-menu">   
-                        <div><a href="#" class="h-open-btn">open</a></div>
+                        <div><a href="#" class="h-open-btn"><i class="fas fa-bars"></i></a></div>
                     <div><a href=""><h1>BalanceDiary</h1></a></div>
                     <div class="top-side">
                         <div><a href="">다이어리</a></div>
@@ -775,7 +934,7 @@
             <div class="hamburger-container">
                 <nav>
                     <div class="hamburger_menu">
-                        <a href="#" class="h-close-btn">close</a>
+                        <a href="#" class="h-close-btn"><i class="far fa-times-circle"></i></a>
                         <div class="logo"><a href="#">BalanceDiary</a></div>
                             <ul>
                                 <li class="menu">
@@ -805,9 +964,9 @@
                             </ul>
                         </div>
                     </nav>
-                <div class="overlay"></div>
-            </div>
-            <section class="content-area">
+                    <div class="overlay"></div>
+                </div>
+                <section class="content-area">
                 <div class="tab-content-box">
                     <div id="lean-mass-up" class="tab-content" style="display: block">
                         <h2>당신은 어떤 식단을 원하십니까?</h2>
@@ -831,10 +990,10 @@
                                 <p>어릴적부터 외소해서 아무리 열심히 운동을 하고, 뭐든지 잘챙겨먹는데도 불구하고 성장하지 않는 몸에 스트레스 받고, 남들이 항상
                                     너무 이렇게나 잘먹는데 어떻게 이렇게 말랐냐는 소리를 듣지는 않으신가요?</p><br>
                                     <p>지금부터 조금만 식습관을 바꾸고, 개선하면 건장하고 멋진 몸으로 거듭날 수 있습니다. 우리 함께 알아보러 가보실까요?</p>
-                            </div>
+                                </div>
+                                <button id="personalization-btn">어떤 식단이 좋을지 모르겠나요?<br> 클릭해보세요!</button>
                                 <button id="prev-btn"><i class="fas fa-chevron-circle-left"></i></button>
                                 <button id="next-btn"><i class="fas fa-chevron-circle-right"></i></button>
-                                <div class="personalization-btn"><a href="#">이동</a></div>
                             </div>
                             <video autoplay loop muted class="bgvid">
                                 <source src="video/lean-mass-up.mp4" type="video/mp4">
@@ -850,20 +1009,20 @@
                             <div class="progress__filled"></div>
                         </div>
                         <div class="tab-menu">
-                      <ul class="tab-menu-list">
+                            <ul class="tab-menu-list">
                           <li>
                               <a href="#lean-mass-up" class="tab-btn is_on" data-num ="0">다이어트 + 근육 증가</a>
                             </li>
                             <li>
                                 <a href="#diet" class="tab-btn" data-num ="1">단순 체중 감량</a>
                             </li>
-                          <li>
+                            <li>
                               <a href="#bulk-up" class="tab-btn" data-num ="2">체중 + 근육 증량</a>
                             </li>      
                         </ul>
                     </div>
-        </header>
-        <main>
+                </header>
+                <main>
             <p class="blank"></p>
             <section class="dont-giveup-wrap">
                 <div class="d-giveup-imgbg">
@@ -913,7 +1072,15 @@
                     <h1 class="rem-recipe-title">11월 4째주<br>
                     BalanceDiary 추천 레서피</h1>
                     <div class="rem-img-box">
+                        <article class="rem-content">
+                                <h2>참치 아보카도 샐러드</h2>
+                                <hr>
+                                <p>참치를 혹시 좋아하시나요? 무거운 마요네즈가 아닌 타르트 라임과<br>
+                                    올리브 오일 드레싱으로 15분 이내에 빠르고 간단하며 <br>
+                                    저렴한 식사를 드실 수 있습니다!</p>
+                        </article>
                         <img src="images/rem-img.jpg" alt="rem-img" width="60%">
+                        <a href="#" class="rem-btn">11월 4째주 추천 레시피 보러가기</a>
                     </div>
                 </article>
             </section>
@@ -1010,12 +1177,12 @@
             <section class="footer-content-box">
                 <nav>
                     <ul class="footer-nav">
-                        <li>회사소개 ㅣ</li>
-                        <li>제휴문의 ㅣ</li>
-                        <li>광고문의 ㅣ</li>
-                        <li>이용약관 ㅣ</li>
-                        <li>개인정보처리방침 ㅣ</li>
-                        <li>공지사항</li>
+                        <li><a href="#">회사소개 ㅣ</a></li>
+                        <li><a href="#">제휴문의 ㅣ</a></li>
+                        <li><a href="#">광고문의 ㅣ</a></li>
+                        <li><a href="#">이용약관 ㅣ</a></li>
+                        <li><a href="#">개인정보처리방침 ㅣ</a></li>
+                        <li><a href="#">공지사항</a></li>
                     </ul>
                 </nav>
                 <div class="footer-infor">
@@ -1047,6 +1214,73 @@
     </div>
     
     <script>
+        
+            // hamburger-nav
+            $(function () {
+            const $body = $("body");
+            const $container = $(".container");
+            const $openBtn = $(".h-open-btn");
+            const $closeBtn = $(".h-close-btn");
+            const $menu = $(".hamburger_menu");
+            const $overlay = $(".overlay");
+            
+            $("a[href$='#']").on("click", function(e){
+                e.preventDefault();
+            });
+
+            $openBtn.on("click",function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }else{
+                    toggleMenu("open");
+                }
+            });
+
+            $closeBtn.on("click",function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }else{
+                    toggleMenu("open");
+                }
+            });
+
+            $overlay.on("click", function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }
+            });
+
+            function toggleMenu(str){
+                if(str == "open"){
+                    $body.addClass("open_status");
+                    $menu.addClass("on");
+                }
+                if(str == "close"){
+                    $body.removeClass("open_status");
+                    $menu.removeClass("on");
+                }
+            }
+        });
+
+        // acodian-nav
+
+        $(function () {
+            $(".sub").hide();
+
+            $(".main").on("click",function(){
+                if(!($(this).hasClass("on"))){
+                    $(".main").removeClass("on");
+                    $(this).addClass("on");
+                    $(".sub").slideUp("fast");
+                    $(this).next().slideDown("fast");
+                }else{
+                    $(this).removeClass("on");
+                    $(this).next().slideUp("fast");
+                }
+            });
+        })
+
+
         // offline-map
         var mapContainer = document.getElementById('offline-map'),
             mapOption = {
@@ -1183,7 +1417,6 @@
         const progressBar = document.querySelector('.progress__filled');
         showVideo(current);
 
-
         function handleProgress() {
         const percent = (video.currentTime / video.duration) * 100;
         progressBar.style.flexBasis = `${percent}%`;
@@ -1215,71 +1448,6 @@
             });
 
         });
-
-                // hamburger-nav
-                $(function () {
-            const $body = $("body");
-            const $container = $(".container");
-            const $openBtn = $(".h-open-btn");
-            const $closeBtn = $(".h-close-btn");
-            const $menu = $(".hamburger_menu");
-            const $overlay = $(".overlay");
-            
-            $("a[href$='#']").on("click", function(e){
-                e.preventDefault();
-            });
-
-            $openBtn.on("click",function(){
-                if($body.hasClass("open_status")){
-                    toggleMenu("close");
-                }else{
-                    toggleMenu("open");
-                }
-            });
-
-            $closeBtn.on("click",function(){
-                if($body.hasClass("open_status")){
-                    toggleMenu("close");
-                }else{
-                    toggleMenu("open");
-                }
-            });
-
-            $overlay.on("click", function(){
-                if($body.hasClass("open_status")){
-                    toggleMenu("close");
-                }
-            });
-
-            function toggleMenu(str){
-                if(str == "open"){
-                    $body.addClass("open_status");
-                    $menu.addClass("on");
-                }
-                if(str == "close"){
-                    $body.removeClass("open_status");
-                    $menu.removeClass("on");
-                }
-            }
-        });
-
-        // acodian-nav
-
-        $(function () {
-            $(".sub").hide();
-
-            $(".main").on("click",function(){
-                if(!($(this).hasClass("on"))){
-                    $(".main").removeClass("on");
-                    $(this).addClass("on");
-                    $(".sub").slideUp("fast");
-                    $(this).next().slideDown("fast");
-                }else{
-                    $(this).removeClass("on");
-                    $(this).next().slideUp("fast");
-                }
-            });
-        })
 
     </script>
 </body>

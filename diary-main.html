@@ -5,8 +5,652 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- https://fontawesome.com/start -->
+    <script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
+    <!-- default css -->
+    <link rel="stylesheet" href="format.css">
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
+        @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
+
+        * {
+            box-sizing:border-box;
+            font-family: 'Montserrat', sans-serif; 
+            text-align: center;
+        }
+
+        body {
+            overflow-x: hidden;
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6em;
+        }
+
+        
+        a {
+            -webkit-transition: all 0.1s linear;
+            transition: all 0.1s linear;
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover {
+            -webkit-transform: scale(1.05);
+            -moz-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            -o-transform: scale(1.05);
+            transform: scale(1.05);
+        }
+        
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+        p.blank {
+            height: 200px;
+        }
+        /* header */
+
+        /* hamburger-menu */
+
+        
+        nav {
+            margin: 0 auto;
+        }
+
+        .h-open-btn {
+            font-size: 2em;
+            display: none;
+        }
+
+        .h-close-btn {
+            font-size: 2em;
+        }
+
+        nav .hamburger_menu {
+            position: fixed;
+            text-align: center;
+            z-index: 300;
+            left: -300px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+            -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+            -webkit-transition: left 0.5s ease-out;
+            transition: left 0.5s ease-out;
+        }
+
+        nav .hamburger_menu.on {
+                left: 0;
+            }
+
+        a.h-close-btn {
+            position: relative;
+            z-index: 101;
+            top: 0;
+            margin: 50px 0 0 150px;
+            width: 40px;
+            height: 40px;
+            line-height: 0;
+        }
+
+        nav .hamburger_menu .logo {
+            margin-top: 100px;
+        }
+
+        nav .hamburger_menu .logo a {
+            text-decoration: none;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.125em;
+            font-weight: 600;
+            color: #555;
+        }
+
+        nav .hamburger_menu ul {
+            z-index: 101;
+            margin-top: 50px;
+        }
+
+        nav .hamburger_menu ul li {
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        nav .hamburger_menu ul li a {
+            text-decoration: none;
+            font-size: 1em;
+            color: #555;
+        }
+
+        nav .hamburger_menu li a:hover {
+            font-weight: bold;
+        }
+
+        .overlay {
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            -webkit-transition: left 0.5s ease-out;
+            transition: left 0.5s ease-out;
+        }
+
+        .open_status .container {
+            margin-left: 300px;
+        }
+
+        .open_status .overlay {
+            top: 0;
+            left: 250px;
+        }
+
+        .open_status .menu_btn {
+            background-position: -41px 0;
+        }
+
+
+        /* acodian menu */
+
+        .title {
+            font-size: 1.5em;
+            font-weight: 300;
+            color: #555;
+        }
+
+        .menu {
+            background-color: #F5F5F5;
+        }
+        
+        .menu .main {
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            text-indent: 20px;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+            background-color: #fff;
+        }
+
+        .menu .main.on {
+            font-weight: bold;
+        }
+        
+        .menu .sub {
+            display: none;
+        }
+        
+        .menu .sub li {
+            height: 35px;
+            line-height: 35px;
+        }
+        
+        .menu .sub li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .menu .sub li a:hover {
+            color: #333;
+        }
+
+        #top-area {
+            width: 100%;
+            height: 200px;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        /* header top-menu */
+
+        #top-menu {
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px 0 30px;
+            width: 100%;
+            background-color: teal;
+        }
+
+        #top-menu a {
+            color: white;
+        }
+        #top-menu a h1 {
+            padding-left: 9em;
+            color: white;
+        }
+
+        .top-side {
+            display: flex;
+        }
+        .top-side a{
+            padding-right: 2em;
+        }
+
+        #top-menu a h1 {
+            padding-left: 8em;
+            color: white;
+        }
+    
+
+        /* header nav-menu */
+        #top-nav {
+            display: flex;
+            background-color: #F5F5F5;
+            justify-content: center;
+            width: 100%;
+            height: 50px;
+            position: relative;
+        }
+
+        #nav-menu {
+            display: flex;
+            height: 60px;
+        }
+
+        #nav-menu>li {
+            position: relative;
+        }
+
+        #nav-menu>li>a {
+            display: block;
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #464646;
+            text-shadow: 0 1px black;
+            padding: 10px 50px;
+        }
+
+        #nav-menu>li>a>span {
+            font-size: 0.5em;
+        }
+
+        #nav-menu>li>a:hover {
+            color: #000;
+            text-shadow: 0 -1px rgb(39, 79, 212);
+        }
+
+        #nav-menu>li>ul {
+            display: none;
+            position: absolute;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.6);
+            left: 55px;
+            margin: 0;
+        }
+
+        #nav-menu>li>ul>li>a {
+            font-size: 0.85rem;
+            padding: 10px;
+            color: #000;
+        }
+
+        #nav-menu>li:hover>ul {
+            display: block;
+            z-index: 10;
+        }
+
+        #nav-menu>li>ul>li>a:hover {
+            font-weight: bolder;
+        }
+
+        
+         /* Tablet-dynamic-header */
+         @media (max-width: 1024px) {
+            /* top-nav */
+            #top-nav {
+                display: none;
+            }
+
+            .h-open-btn {
+                display: block;
+            }
+
+            /* tab - content */
+            .tab-content h1 {
+                font-size: 1.4em;
+                margin-bottom: 0;
+            }
+
+            .tab-content p {
+                display: none;
+            }
+        }
+
+        /* Mobile-dynaminc-header */
+
+        @media (max-width: 768px) {
+
+        /* tab-cotent */
+        .tab-content {
+            padding-top: 10%;
+            }
+
+        }
+       
+
+        /* main */
+        
+        
+
+
+        /* footer */
+        footer {
+            width: 100%;
+            background-color: #377E7F;
+            color: #F5F5F5;
+            display: flex;
+            display: flex;
+        }
+        .footer-logo {
+            padding-top: 6em;
+            width: 15%;
+            text-align: center;
+        }
+        .footer-logo a{
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        .footer-content-box {
+            width: 100%;
+        }
+        .footer-infor {
+            padding-top: 2em;
+            padding-left: 6em;
+            display: flex;
+        }
+        .footer-infor article {
+            padding-left: 2em;
+        }
+        .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            font-weight: bold;
+            padding-top: 2em;
+            padding-right: 10em;
+            justify-content: center;
+        }
+        .footer-aBox {
+            display: grid;
+            padding: 2em 5em;
+            margin-right: 10em;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .footer-aBox a{
+            text-align: center;
+            font-size: 2.5em;
+            padding: 10px;
+            color: white;
+        }
+        .footer-aBox img {
+            width: 60%;
+            height: 50px;
+        }
+        .copyright {
+            padding-right: 10em;
+            text-align: center;
+        }
+
+        
+        /* Mobile-dynamic-footer */
+        @media (max-width: 768px) {
+            .footer-aBox {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        
+        /* recommend Media query */
+
+        /* Tablet Device */
+        @media(max-width:1024px) {
+            .rem-content-container {
+                grid-template-columns: repeat(2, 1fr);
+                padding-left: 0;  
+                width: 80%;
+            }
+            .video-wrap {
+                grid-column: span 2;
+            }
+            
+        }
+
+        @media(max-width:768px) {
+            .rem-content-container {
+                display: block;
+            }
+
+            .rem-content-container h2 {
+                padding-top: 2em;
+            }
+
+            .rem-content1 {
+                padding: 0;
+            }
+
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="container">
+        <header>
+                <section id="top-area">
+                    <section id="top-menu"> 
+                        <div><a href="#" class="h-open-btn"><i class="fas fa-bars"></i></a></div>
+                    <div><a href=""><h1>BalanceDiary</h1></a></div>
+                    <div class="top-side">
+                        <div><a href="">다이어리</a></div>
+                        <div><a href="">로그인</a></div>
+                    </div>
+                </section>
+                <nav id="top-nav">
+                    <ul id="nav-menu">
+                        <li><a href="#">회사소개 <span>▼</span></a>
+                            <ul>
+                                <li><a href="#">구상 계기</a></li>
+                                <li><a href="#">발전 계획</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">식단 가이드 <span>▼</span></a>
+                            <ul>
+                                <li><a href="#">다이어트 + 근육 증가</a></li>
+                                <li><a href="#">단순 체중 감량</a></li>
+                                <li><a href="#">체중 + 근육 증량</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Information <span>▼</span></a>
+                            <ul>
+                                <li><a href="#">자주 묻는 질문 Q&A</a></li>
+                                <li><a href="#">BalanceDiary 추천 레서피</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">우리들의 Diary</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                </nav>
+            </section>
+            <div class="hamburger-container">
+                <nav>
+                    <div class="hamburger_menu">
+                        <a href="#" class="h-close-btn"><i class="far fa-times-circle"></i></a>
+                        <div class="logo"><a href="#">BalanceDiary</a></div>
+                            <ul>
+                                <li class="menu">
+                                    <a class="main" href="#">회사 소개</a>
+                                    <ul class="sub">
+                                        <li><a href="#">구상 계기</a></li>
+                                        <li><a href="#">발전 계획</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu">
+                                    <a class="main" href="#">식단가이드</a>
+                                    <ul class="sub">
+                                        <li><a href="#">다이어트 + 근육 증가</a></li>
+                                        <li><a href="#">단순 체중 감량</a></li>
+                                        <li><a href="#">체중 + 근육 증량</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu">
+                                    <a class="main" href="#">Information</a>
+                                    <ul class="sub">
+                                        <li><a href="#">자주 묻는 질문 Q&A</a></li>
+                                        <li><a href="#">BalanceDiary 추천 레서피</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">우리들의 Diary</a></li>
+                                <li><a href="#">고객센터</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="overlay"></div>
+            </header>
+            <main>
+                <section id="diary-main">
+                    <h1>우리들의 영양 다이어리</h1>
+                </section>
+                <section>
+                    <article class="diary-main-recent">
+
+                    </article>
+                    <article class="diary-main-Most">
+
+                    </article>
+                </section>
+
+                <section class="our-diary">
+                    <div>
+                        <h1 class="our-diary-title">Our Diary</h1>
+                    </div>
+                    <input type="">
+                    <div class="our-diary-board">
+                        
+                    </div>
+                </section>
+                <a href="">나의 식단 등록하기</a>
+            </main>
+            <footer>
+            <article class="footer-logo"><a href="#">BalanceDiary</a></article>
+            <section class="footer-content-box">
+                <nav>
+                    <ul class="footer-nav">
+                        <li><a href="#">회사소개 ㅣ</a></li>
+                        <li><a href="#">제휴문의 ㅣ</a></li>
+                        <li><a href="#">광고문의 ㅣ</a></li>
+                        <li><a href="#">이용약관 ㅣ</a></li>
+                        <li><a href="#">개인정보처리방침 ㅣ</a></li>
+                        <li><a href="#">공지사항</a></li>
+                    </ul>
+                </nav>
+                <div class="footer-infor">
+                    <address>
+                        <h6>(주)발란스다이어리</h6>
+                        <p>등록번호: 경기 이 00000 | 등록연월일: 2011. 11. 11</p>
+                        <p>발행인: 이영주 | 편집인: 이영주 | 발행소: 서울 금천구 가산디지털2로 115 대륭테크노타운 3차 1109호</p>
+                        <p>발행연월일: 2011 11. 11 | 전화번호: 02 - 0000 - 0000 </p>
+                    </address>
+                    <article>
+                        <h6>고객상담센터 080-777-7777</h6>
+                        <p>E-mail: BalanceDiary@naver.com</p>
+                        <p>평일 : 09:00 - 18:00</p>
+                    </article>
+                </div>
+                <div class="footer-aBox">
+                    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.ePrivacy.or.kr"><img src="images/ePrivacy.png" alt="ePrivacy"></a>
+                    <a href="https://www.kns.or.kr"><img src="images/kns.png" alt="kns"></a>
+                    <a href="https://www.mfds.go.kr"><img src="images/foodsafe.png" alt="foodsafe"></a>
+                    <a href="https://www.mohw.go.kr"><img src="images/bogun.png" alt="bogun"></a>
+                </div>
+                <div class="copyright"><h5>Copyright ⓒ balanceDiary co. Ltd All Rights Reserved.</h5></div>
+            </section>
+        </footer>
+    </div>
+    <script>
+        
+            // hamburger-nav
+            $(function () {
+            const $body = $("body");
+            const $container = $(".container");
+            const $openBtn = $(".h-open-btn");
+            const $closeBtn = $(".h-close-btn");
+            const $menu = $(".hamburger_menu");
+            const $overlay = $(".overlay");
+            
+            $("a[href$='#']").on("click", function(e){
+                e.preventDefault();
+            });
+
+            $openBtn.on("click",function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }else{
+                    toggleMenu("open");
+                }
+            });
+
+            $closeBtn.on("click",function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }else{
+                    toggleMenu("open");
+                }
+            });
+
+            $overlay.on("click", function(){
+                if($body.hasClass("open_status")){
+                    toggleMenu("close");
+                }
+            });
+
+            function toggleMenu(str){
+                if(str == "open"){
+                    $body.addClass("open_status");
+                    $menu.addClass("on");
+                }
+                if(str == "close"){
+                    $body.removeClass("open_status");
+                    $menu.removeClass("on");
+                }
+            }
+        });
+
+        // acodian-nav
+
+        $(function () {
+            $(".sub").hide();
+
+            $(".main").on("click",function(){
+                if(!($(this).hasClass("on"))){
+                    $(".main").removeClass("on");
+                    $(this).addClass("on");
+                    $(".sub").slideUp("fast");
+                    $(this).next().slideDown("fast");
+                }else{
+                    $(this).removeClass("on");
+                    $(this).next().slideUp("fast");
+                }
+            });
+        })
+
+    </script>
 </body>
 </html>

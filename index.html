@@ -235,6 +235,7 @@
             background-color: teal;
         }
         #top-menu a {
+            font-weight: bold;
             color: white;
         }
         #top-menu a h1 {
@@ -376,8 +377,9 @@
             color: #B5B5B5;
         }
 
-        .is_on{
+        .tab-menu .tab-menu-list a.is_on{
             font-weight: bold;
+            color: black;
             border-bottom: 2px solid #333;
         }
 
@@ -402,7 +404,9 @@
             position: absolute;
             z-index: 100;
             opacity: 55%;
-            top: 400px;
+            color: white;
+            height: 300px;
+            top: 20vw;
             left: 0;
             font-size: 2em;
         }
@@ -410,8 +414,10 @@
         #next-btn {
             position: absolute;
             z-index: 100;
+            color: white;
             opacity: 55%;
-            top: 400px;
+            height: 300px;
+            top: 20vw;
             right: 0;
             font-size: 2em;
         }
@@ -422,12 +428,17 @@
             color: #fff;
         }
         
-        .bgvid{
+        .bgvid {
             display: none;
             position: relative;
             width: 100%; 
             z-index: -100;
         }
+
+        .bgvid.vid_on {
+            display: block;
+        }
+
 
         /* Tablet-dynamic-header */
         @media (max-width: 1024px) {
@@ -451,7 +462,7 @@
             }
 
             #personalization-btn {
-                padding: 10px;
+                padding: 0px;
             }
         }
 
@@ -901,7 +912,7 @@
                         <div><a href="#" class="h-open-btn"><i class="fas fa-bars"></i></a></div>
                     <div><a href=""><h1>BalanceDiary</h1></a></div>
                     <div class="top-side">
-                        <div><a href="">다이어리</a></div>
+                        <div><a href="">My Diary</a></div>
                         <div><a href="">로그인</a></div>
                     </div>
                 </section>
@@ -991,7 +1002,7 @@
                                     너무 이렇게나 잘먹는데 어떻게 이렇게 말랐냐는 소리를 듣지는 않으신가요?</p><br>
                                     <p>지금부터 조금만 식습관을 바꾸고, 개선하면 건장하고 멋진 몸으로 거듭날 수 있습니다. 우리 함께 알아보러 가보실까요?</p>
                                 </div>
-                                <button id="personalization-btn">어떤 식단이 좋을지 모르겠나요?<br> 클릭해보세요!</button>
+                                <button id="personalization-btn">어떤 식단이 좋을지 모르겠나요?<br>그렇다면 클릭해주세요!</button>
                                 <button id="prev-btn"><i class="fas fa-chevron-circle-left"></i></button>
                                 <button id="next-btn"><i class="fas fa-chevron-circle-right"></i></button>
                             </div>
@@ -1393,8 +1404,8 @@
                     else current = 0;
                     showTab(current);
                     showVideo(current);
-
                 }
+
         prevBtn.addEventListener("click", function(){
             prevTab();
         });
@@ -1403,25 +1414,32 @@
         });
         showTab(current);
 
-        const tabVideo = document.querySelectorAll('.bgvid')
+
+        const tabVideo = document.querySelectorAll('.bgvid');
         function showVideo(n){
             for (const bgvid of tabVideo) {
-                bgvid.style.display = "none";
+                bgvid.classList.remove("vid_on");
             }
-            tabVideo[n].style.display = "block";
+            tabVideo[n].classList.add("vid_on");
         }
-
-        // 재생 진행바
-        const video = document.querySelector('.bgvid');
-        const progress = document.querySelector('.progress');
-        const progressBar = document.querySelector('.progress__filled');
         showVideo(current);
 
+
+        // progress_bar
+        const video = document.querySelector('.vid_on');
+        const progressBar = document.querySelector('.progress__filled');
+        const progress = document.querySelector('.progress');
+
+    
+
         function handleProgress() {
-        const percent = (video.currentTime / video.duration) * 100;
-        progressBar.style.flexBasis = `${percent}%`;
-        }
-        video.addEventListener('timeupdate', handleProgress);       
+                const percent = (video.currentTime / video.duration) * 100;
+                progressBar.style.flexBasis = `${percent}%`;
+                if(percent = 100){
+                    nextTab();
+                    }
+                }
+            video.addEventListener('timeupdate', handleProgress);       
 
 
         // 상단 바로가기 사이드 배너

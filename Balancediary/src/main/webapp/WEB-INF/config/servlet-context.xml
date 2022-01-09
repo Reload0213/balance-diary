@@ -14,7 +14,7 @@
    <annotation-driven/>
    
    <!-- 스캔할 bean 들이 모여있는 패키지를 지정한다. -->
-   <context:component-scan base-package="com.balancediary.controller"/>
+   <context:component-scan base-package="com.balancediary"/>
    
    <!-- Controller의 메서드에서 반환하는 문자열 앞 뒤에 붙일 경로 정보를 세팅 -->
    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -23,5 +23,5 @@
    </beans:bean>
    
    <!-- 정적 파일 경로 세팅 -->
-   <resources mapping="/**" location="/resources/"/>
+   <resources mapping="/resources/**" location="/resources/"/>
 </beans:beans>

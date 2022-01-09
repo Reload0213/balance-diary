@@ -709,6 +709,7 @@
             if(distance < 0){
                 clearInterval(countDownDate);
                 document.getElementById("count-time").innerHTML = "모집 마감. 참여해주셔서 감사합니다."
+                document.querySelector("apptester-form").style.display = "none";
             }
         }, 1000);
     </script>

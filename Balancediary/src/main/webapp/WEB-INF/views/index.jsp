@@ -20,8 +20,8 @@
     <!-- https://fontawesome.com/start -->
     <script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
     <!-- default css -->
-    <link rel="stylesheet" href="css/format.css">
-    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="resources/css/format.css">
+    <script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
         @import url('http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css');
@@ -385,21 +385,68 @@
             border-bottom: 2px solid #333;
         }
 
-        #personalization-btn{
+        .tab-content-link {
             color: white;
             padding: 1em;
+            margin-top: 1em;
             opacity: 80%;
             font-weight: bold;
             border-radius: 30px;
             font-size: 3vh;
         }
-        
-        #personalization-btn:hover {
-            background-color: #ECCEA0;
+
+        .tab-content-link:hover {
+            background-color: #215190;
             opacity: 80%;
             text-shadow: 0 1px black;
             box-shadow: 0 0 10px rgba(0, 0, 0, .6);
         }
+
+        /* personalization */
+
+        .personalization-bg {
+            background: url(resources/images/personalization-bg.jpg) no-repeat;
+            background-size: cover;
+            position: relative;
+            width: 100%;
+            height: 50vw;
+        }
+
+        #personalization-btn{
+            color: #333;
+            position: absolute;
+            top: 13vw;
+            left: 30vw;
+            font-size: 1.5vw;
+            padding: 1em;
+            font-weight: bold;
+            border-radius: 30px;
+        }
+        
+        .personalization-img {
+            position: absolute;
+            color: #fff;
+            width: 20vw;
+            top: 7vw;
+            left: 6vw;
+            text-align: center;
+            line-height: 1.2em;
+        }
+        
+        .personalization-img h3 {
+            display: none;
+        }
+        .personalization-img:hover>h3 {
+            background-color: #215190;
+            color: #fff;
+            text-shadow: 0 1px black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .6);
+            padding: 0.5em;
+            border-radius: 20px;
+            display: block;
+        }
+
+
 
         /* slide-tab */
         #prev-btn {
@@ -443,7 +490,7 @@
 
 
         /* Tablet-dynamic-header */
-        @media (max-width: 1024px) {
+        @media (max-width: 1100px) {
             /* top-nav */
             #top-nav {
                 display: none;
@@ -463,8 +510,8 @@
                 display: none;
             }
 
-            #personalization-btn {
-                padding: 0px;
+            .tab-content-link {
+                margin: 0;
             }
         }
 
@@ -478,7 +525,6 @@
             }
 
         }
-
 
         /* main */
 
@@ -565,7 +611,7 @@
             position: relative;
             flex-direction: column;
             justify-content: center;
-            background: url(images/rem-bg.jpg) no-repeat center;
+            background: url(resources/images/rem-bg.jpg) no-repeat center;
             background-size: cover;
         }
 
@@ -710,7 +756,7 @@
             height: 400px;
             margin-left: -10%;
             padding-right: 10vw;
-            background: url("images/map-bg.jpg") no-repeat;
+            background: url("resources/images/map-bg.jpg") no-repeat;
         }
         #offline-map {
             width: 80%;
@@ -912,10 +958,10 @@
                 <section id="top-area">
                     <section id="top-menu">   
                         <div><a href="#" class="h-open-btn"><i class="fas fa-bars"></i></a></div>
-                    <div><a href=""><h1>BalanceDiary</h1></a></div>
+                    <div><a href="home"><h1>BalanceDiary</h1></a></div>
                     <div class="top-side">
-                        <div><a href="">My Diary</a></div>
-                        <div><a href="">로그인</a></div>
+                        <div><a href="my-diary">My Diary</a></div>
+                        <div><a href="login">로그인</a></div>
                     </div>
                 </section>
                 <nav id="top-nav">
@@ -928,18 +974,18 @@
                         </li>
                         <li><a href="#">식단 가이드 <span>▼</span></a>
                             <ul>
-                                <li><a href="#">다이어트 + 근육 증가</a></li>
-                                <li><a href="#">단순 체중 감량</a></li>
-                                <li><a href="#">체중 + 근육 증량</a></li>
+                                <li><a href="lean-mass-up">다이어트 + 근육 증가</a></li>
+                                <li><a href="diet">단순 체중 감량</a></li>
+                                <li><a href="bulk-up">체중 + 근육 증량</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Information <span>▼</span></a>
                             <ul>
-                                <li><a href="#">자주 묻는 질문 Q&A</a></li>
-                                <li><a href="#">BalanceDiary 추천 레서피</a></li>
+                                <li><a href="q&a">자주 묻는 질문 Q&A</a></li>
+                                <li><a href="recommend">BalanceDiary 추천 레서피</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">우리들의 Diary</a></li>
+                        <li><a href="diary-main">우리들의 Diary</a></li>
                         <li><a href="#">고객센터</a></li>
                     </ul>
                 </nav>
@@ -960,19 +1006,19 @@
                                 <li class="menu">
                                     <a class="main" href="#">식단가이드</a>
                                     <ul class="sub">
-                                        <li><a href="#">다이어트 + 근육 증가</a></li>
-                                        <li><a href="#">단순 체중 감량</a></li>
-                                        <li><a href="#">체중 + 근육 증량</a></li>
+                                        <li><a href="lean-mass-up">다이어트 + 근육 증가</a></li>
+                                        <li><a href="diet">단순 체중 감량</a></li>
+                                        <li><a href="bulk-up">체중 + 근육 증량</a></li>
                                     </ul>
                                 </li>
                                 <li class="menu">
                                     <a class="main" href="#">Information</a>
                                     <ul class="sub">
-                                        <li><a href="#">자주 묻는 질문 Q&A</a></li>
-                                        <li><a href="#">BalanceDiary 추천 레서피</a></li>
+                                        <li><a href="q&a">자주 묻는 질문 Q&A</a></li>
+                                        <li><a href="recommend">BalanceDiary 추천 레서피</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">우리들의 Diary</a></li>
+                                <li><a href="diary-main">우리들의 Diary</a></li>
                                 <li><a href="#">고객센터</a></li>
                             </ul>
                         </div>
@@ -986,15 +1032,17 @@
                         <h1>탄탄하고 건강미 넘치는 몸을 가꾸고 싶나요?</h1>
                         <p>바쁜 생활 혹은 잘못된 습관으로 인해 나도 모르게 불어난 몸을 바꾸고 싶어 운동을 시작했으나, 맘처럼 변화가 없거나 작은 변화가 있었지만 그것도 잠시 다시 제자리걸음인 것만 같아 고민이시지 않은가요?</p><br>
                         <p>건강한 체중감량을 통해 날씬하고 탄탄한 몸을 만드는 식단을 함께 알아보러 가보실까요?</p>
+                        <a href="lean-mass-up" class="tab-content-link">린매스업 식단 살펴보기 ></a>
                     </div>
                     
                     <div id="diet" class="tab-content">
                         <h2>당신은 어떤 식단을 원하십니까?</h2>
-                        <h1>늘어난 뱃살, 운동할 시간은 부족하고<br> 식단을 통해 체중감량을 하고 싶으신가요?</h1>
+                        <h1>늘어난 뱃살, 운동할 시간은 부족하고 식단을 통해 체중감량을 하고 싶으신가요?</h1>
                         <p>오랜 기간 잘못된 식습관으로 인해 늘어난 체중 때문에 늘 고민하고 먹고싶은 것을 참아도 보고 
                             굶어봐도 금방 제자리인 몸무게에 힘들어 하고 계신가요?</p><br>
                             <p>이대로는 건강조차 헤칠수 있습니다. 먹지않고 굶는 것은 결국 단기적일뿐, 건강한 식습관을 통해 이젠 굶지 않고 챙겨먹으면서
                                 날씬한 몸을 만드는 식단을 함께 알아보러 가보실까요?</p>
+                                <a href="diet" class="tab-content-link">체중감량 식단 살펴보기 ></a>
                             </div>
                             
                             <div id="bulk-up" class="tab-content">
@@ -1003,19 +1051,19 @@
                                 <p>어릴적부터 외소해서 아무리 열심히 운동을 하고, 뭐든지 잘챙겨먹는데도 불구하고 성장하지 않는 몸에 스트레스 받고, 남들이 항상
                                     너무 이렇게나 잘먹는데 어떻게 이렇게 말랐냐는 소리를 듣지는 않으신가요?</p><br>
                                     <p>지금부터 조금만 식습관을 바꾸고, 개선하면 건장하고 멋진 몸으로 거듭날 수 있습니다. 우리 함께 알아보러 가보실까요?</p>
+                                    <a href="bulk-up" class="tab-content-link">벌크업 식단 살펴보기 ></a>
                                 </div>
-                                <button id="personalization-btn">어떤 식단이 좋을지 모르겠나요?<br>그렇다면 클릭해주세요!</button>
                                 <button id="prev-btn"><i class="fas fa-chevron-circle-left"></i></button>
                                 <button id="next-btn"><i class="fas fa-chevron-circle-right"></i></button>
                             </div>
                             <video autoplay loop muted class="bgvid">
-                                <source src="video/lean-mass-up.mp4" type="video/mp4">
+                                <source src="resources/video/lean-mass-up.mp4" type="video/mp4">
                             </video>
                             <video autoplay loop muted class="bgvid">
-                                <source src="video/diet.mp4" type="video/mp4">
+                                <source src="resources/video/diet.mp4" type="video/mp4">
                             </video>
                             <video autoplay loop muted class="bgvid">
-                                <source src="video/bulk-up.mp4" type="video/mp4">
+                                <source src="resources/video/bulk-up.mp4" type="video/mp4">
                             </video>
                         </section>
                         <div class="progress">
@@ -1023,23 +1071,33 @@
                         </div>
                         <div class="tab-menu">
                             <ul class="tab-menu-list">
-                          <li>
-                              <a href="#lean-mass-up" class="tab-btn is_on" data-num ="0">다이어트 + 근육 증가</a>
-                            </li>
+                                <li>
+                                    <a href="#lean-mass-up" class="tab-btn is_on" data-num ="0">다이어트 + 근육 증가</a>
+                                </li>
                             <li>
                                 <a href="#diet" class="tab-btn" data-num ="1">단순 체중 감량</a>
                             </li>
                             <li>
-                              <a href="#bulk-up" class="tab-btn" data-num ="2">체중 + 근육 증량</a>
+                                <a href="#bulk-up" class="tab-btn" data-num ="2">체중 + 근육 증량</a>
                             </li>      
                         </ul>
                     </div>
                 </header>
                 <main>
-            <p class="blank"></p>
+                    <p class="blank"></p>
+                    <section class="personalization-bg">
+                        <div id="personalization-btn">
+                            <h1>어떤 식단이 좋을지 모르겠나요?</h1>
+                            <div class="personalization-img" >
+                                <a href="personalization"><img src="resources/images/personalization-img.png" alt="porsonalization"></a>
+                                <h3>설문을 통해 도움 받기</h3>
+                            </div>
+                        </div>
+                    </section>
+                    <p class="blank"></p>
             <section class="dont-giveup-wrap">
                 <div class="d-giveup-imgbg">
-                   <img src="images/dont-give-up.webp" class="d-giveup-img" alt="d-giveup-img">
+                   <img src="resources/images/dont-give-up.webp" class="d-giveup-img" alt="d-giveup-img">
                 </div>
                 <article class="d-giveup-content-wrap">
                     <div class="d-giveup-content">
@@ -1092,8 +1150,8 @@
                                     올리브 오일 드레싱으로 15분 이내에 빠르고 간단하며 <br>
                                     저렴한 식사를 드실 수 있습니다!</p>
                         </article>
-                        <img src="images/rem-img.jpg" alt="rem-img" width="60%">
-                        <a href="#" class="rem-btn">11월 4째주 추천 레시피 보러가기</a>
+                        <img src="resources/images/rem-img.jpg" alt="rem-img" width="60%">
+                        <a href="${pageContext.request.contextPath}/recommend" class="rem-btn">11월 4째주 추천 레시피 보러가기</a>
                     </div>
                 </article>
             </section>
@@ -1105,8 +1163,8 @@
                 </div>
                 <article class="collabo-cards">
                       <div class="collabo-card-box">
-                        <div class="collabo-card-img"><img src="images/beak.png" alt="백종원"></div>
-                        <img src="images/collabo-card1.png" alt="백종원">
+                        <div class="collabo-card-img"><img src="resources/images/beak.png" alt="백종원"></div>
+                        <img src="resources/images/collabo-card1.png" alt="백종원">
                         <h3>요식업의 선두주자 ‘백종원’</h3>
                         <p>
                             1994년부터 더본코리아를 세워서 경영 중인 그는 새마을 식당, 한신포자, 홍콩반점0410, 미정 국수 등 대중들에게도 친숙한 여러 프렌차이즈를 운영 중이며, 중식, 한식, 분식 등은 물론 카페 “빽다방”까지 거의 모든 범위를 아우르는 대한민국에서 가장 친숙하며 실력을 인정받은 CEO이자 요리 연구가이다.
@@ -1116,8 +1174,8 @@
                         <a href="#">레서피 보러가기 <i class="fas fa-chevron-right"></i></a>
                       </div>
                       <div class="collabo-card-box">
-                        <div class="collabo-card-img"><img src="images/SWFather.png" alt="승우아빠"></div>
-                        <img src="images/collabo-card2.png" alt="승우아빠" />
+                        <div class="collabo-card-img"><img src="resources/images/SWFather.png" alt="승우아빠"></div>
+                        <img src="resources/images/collabo-card2.png" alt="승우아빠" />
                         <h3> 유튜버 ‘승우아빠’</h3>
                         <p>
                             셰프 출신 요리 유튜버로 유명 호텔에서도 근무한 경험이 있을 정도로 실력자다. 초보자도 따라 하기 쉬운 요리를 소개하는 ‘남편세끼’, 한가지 재료로 N가지 요리법을 알려주는 ‘세상 간단한 시리즈’, 재료나 조리도구에 대한 다양한 이야기와 꿀팁을 소개하는 ‘궁금해 요리’ 등 요리에 관한 다양한 콘텐츠가 있다. 쉽고 간단한 레시피를 소개하고, 매번 ‘사드세요.. 제발!’이라는 결론과 함께 특유의 유머 감각으로 많은 이들의 호응을 얻고 있다.
@@ -1127,8 +1185,8 @@
                         <a href="#">레서피 보러가기 <i class="fas fa-chevron-right"></i></a>
                       </div>
                       <div class="collabo-card-box">
-                        <div class="collabo-card-img"><img src="images/choi.png" alt="최현석"></div>
-                        <img src="images/collabo-card3.png" alt="최현석" />
+                        <div class="collabo-card-img"><img src="resources/images/choi.png" alt="최현석"></div>
+                        <img src="resources/images/collabo-card3.png" alt="최현석" />
                         <h3> 크레이지 셰프 ‘최현석’ </h3>
                         <p>
                             맛있는 음식을 먹고 나면 안 좋았던 기억도 잊혀질 정도로 행복해진다. 거기에 미감 있는 플레이팅이 더해지면 감탄이 절로 나온다. 셰프들이 출연하는 방송이 많아지고 있는 셰프전성시대. 그 중심에 최현석 셰프가 있다. 허세셰프, 크레이지 셰프 등 다양한 별명을 갖고 있는 그는 고졸출신이지만 학력이라는 벽을 뛰어넘을 정도의 열정과 창의력을 갖고 있다. 1,2년 일하다가 다른 곳으로 이직하는 요리사와 달리 첫 출근한 직장에서 10년 동안 일하면서 기본기를 다졌다. 그의 성실함 은 창의성 있는 창작요리로 이어졌고, 크레이지 셰프라는 별명까지 얻었다. 최현석 셰프의 고급스럽지만 누구나 할수 있는 건강 레서피를 배워보자.
@@ -1136,8 +1194,8 @@
                         <a href="#">레서피 보러가기 <i class="fas fa-chevron-right"></i></a>
                       </div>
                       <div class="collabo-card-box">
-                        <div class="collabo-card-img"><img src="images/bok.png" alt="이연복"></div>
-                        <img src="images/collabo-card4.png" alt="이연복" />
+                        <div class="collabo-card-img"><img src="resources/images/bok.png" alt="이연복"></div>
+                        <img src="resources/images/collabo-card4.png" alt="이연복" />
                         <h3> 중화요리의 대가 ‘이연복’</h3>
                         <p>
                         이연복 셰프는 중식계의 스타 요리사로 꼽힌다. 열세 살 중국집 배달 일을 시작으로 43년간 중식 인생을 살아왔다. 중식이 가장 화려한 꽃을 피웠던 70년대, 화려함의 극치를 자랑하던 당대 최고의 중식당 사보이 호텔의 '호화대반점'에서 요리의 꽃을 피우기 시작했다. 이어 대만대사관 최연소 주방장에 오르며 명성을 날렸다.
@@ -1154,7 +1212,7 @@
                     <h2>여러분들의 식단관리를 함께 할 BalanceDiary가 <br>
                         모바일앱으로도 개발 중에 있습니다. 초기 버전부터 함께 해주실<br>
                         베타 테스터분들을 모집 중 입니다. </h2>
-                    <div class="app-tester-btn"><a href="#">신청하러 가기</a></div>
+                    <div class="app-tester-btn"><a href="appTester">신청하러 가기</a></div>
                 </article>
             </section>    
             <p class="blank"></p>
@@ -1186,7 +1244,7 @@
            <a href=""><i class="fas fa-arrow-up"></i></a>
         </div>
         <footer>
-            <article class="footer-logo"><a href="#">BalanceDiary</a></article>
+            <article class="footer-logo"><a href="home">BalanceDiary</a></article>
             <section class="footer-content-box">
                 <nav>
                     <ul class="footer-nav">
@@ -1442,8 +1500,9 @@
                     }
                 }
             video.addEventListener('timeupdate', handleProgress);       
-
-
+       
+            
+            
         // 상단 바로가기 사이드 배너
         $(function() {
         var $w = $(window),

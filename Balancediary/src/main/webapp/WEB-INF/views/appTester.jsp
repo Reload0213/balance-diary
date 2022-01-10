@@ -215,7 +215,7 @@
          let minutes = Math.floor((distance % (1000*60*60))/(1000*60));
          let secounds = Math.floor((distance % (1000*60))/(1000));
 
-         document.getElementById("count-time").innerText = `${days}일 ${hours}시 ${minutes}분 ${secounds}초`;
+         document.getElementById("count-time").innerText = days+"일 "+hours+"시 "+minutes+"분 "+secounds+"초";
 
          if(distance < 0){
              clearInterval(countDownDate);

@@ -362,7 +362,7 @@ p.blank {
                 let fullDate = yy + '.' + init.addZero(mm + 1) + '.' + init.addZero(countDay + 1);
                 trtd += '<td class="day';
                 trtd += (markToday && markToday === countDay + 1) ? ' today" ' : '"';
-                trtd += ` data-date="${countDay + 1}" data-fdate="${fullDate}">`;
+                trtd += "data-date="+(countDay + 1)+" data-fdate="+fullDate+">";
             }
             trtd += (startCount) ? ++countDay : '';
             // ************ 데이터 삽입 **************
@@ -377,7 +377,7 @@ p.blank {
             trtd += '</tr>';
         }
         $calBody.innerHTML = trtd;
-        }
+        };
 
         /**
          * @param {string} val
@@ -398,7 +398,7 @@ p.blank {
         eventData['id'] = id;
         // init.event.push(eventData);
         // $todoList.appendChild(createLi(id, val, date));
-        }
+        };
 
         loadYYMM(init.today);
         loadDate(init.today.getDate(), init.today.getDay());
@@ -407,18 +407,17 @@ p.blank {
         $btnPrev.addEventListener('click', () => loadYYMM(init.prevMonth()));
 
         $calBody.addEventListener('click', (e) => {
-        if (e.target.classList.contains('day')) {
-            if (init.activeDTag) {
-            init.activeDTag.classList.remove('day-active');
-            }
+            if (e.target.classList.contains('day')) {
+                if (init.activeDTag) {
+                init.activeDTag.classList.remove('day-active');
+                }
 
-            let day = Number(e.target.dataset.date);
-            loadDate(day, e.target.cellIndex);
-            e.target.classList.add('day-active');
-            init.activeDTag = e.target;
-            init.activeDate.setDate(day);
-            // reloadTodo();
-        }
+                let day = Number(e.target.dataset.date);
+                loadDate(day, e.target.cellIndex);
+                e.target.classList.add('day-active');
+                init.activeDTag = e.target;
+                init.activeDate.setDate(day);
+            };
         });
     </script>
 </body>

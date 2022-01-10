@@ -876,7 +876,7 @@
             trtd += '</tr>';
         }
         $calBody.innerHTML = trtd;
-        }
+        };
 
         /**
          * @param {string} val
@@ -916,8 +916,9 @@
             e.target.classList.add('day-active');
             init.activeDTag = e.target;
             init.activeDate.setDate(day);
+            console.log(day);
             // reloadTodo();
-        }
+           };
         });
     </script>
 </body>

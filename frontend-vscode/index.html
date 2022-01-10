@@ -1422,18 +1422,18 @@
         const tabContents = document.querySelectorAll('.content-area .tab-content')
 
         for(var i = 0; i < tabList.length; i++){
-        tabList[i].querySelector('.tab-btn').addEventListener('click', function(e){
-         e.preventDefault();
+            tabList[i].querySelector('.tab-btn').addEventListener('click', function(e){
+            e.preventDefault();
         for(var j = 0; j < tabList.length; j++){
-         tabContents[j].style.display = 'none';
-         tabListA[j].classList.remove("is_on")
+            tabContents[j].style.display = 'none';
+            tabListA[j].classList.remove("is_on")
          }
         
         vidIndex = this.dataset.num;
-        showVideo(vidIndex);
+            showVideo(vidIndex);
 
         activeCont = this.getAttribute('href');
-        document.querySelector(activeCont).style.display = 'block';
+            document.querySelector(activeCont).style.display = 'block';
          
         activetab = this.classList.add("is_on");
         });
@@ -1468,9 +1468,11 @@
                 }
 
         prevBtn.addEventListener("click", function(){
+            console.log("test");
             prevTab();
         });
         nextBtn.addEventListener("click", function(){
+            console.log("test2");
             nextTab();
         });
         showTab(current);
@@ -1496,7 +1498,7 @@
         function handleProgress() {
                 const percent = (video.currentTime / video.duration) * 100;
                 progressBar.style.flexBasis = `${percent}%`;
-                if(percent = 100){
+                if(percent == 100){
                     nextTab();
                     }
                 }

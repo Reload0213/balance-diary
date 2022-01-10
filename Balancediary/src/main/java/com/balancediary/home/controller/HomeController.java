@@ -10,11 +10,11 @@ public class HomeController {
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String home() {
-		return "index";
+		return "home";
 	}
 	
 	@GetMapping("home")
 	public String returnHome() {
-		return "index";
+		return "home";
 	}
 }

@@ -38,8 +38,8 @@
 
 	<interceptors>
 		<interceptor>
-			<!-- /bbs/ 경로를 타는 어떤 루트던 인터셉터를 거쳐야만함 -->
-			<mapping path="/bbs/**" />
+			<!-- /member/ 경로를 타는 어떤 루트던 인터셉터를 거쳐야만함 -->
+			<mapping path="/member/**" />
 			<beans:bean
 				class="com.balancediary.interceptor.LoginInterceptor"></beans:bean>
 		</interceptor>

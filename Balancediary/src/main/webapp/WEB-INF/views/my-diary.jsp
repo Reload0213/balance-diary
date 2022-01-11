@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +12,13 @@
 <script src="https://kit.fontawesome.com/f1def33959.js"
 	crossorigin="anonymous"></script>
 <!-- default css -->
-<link rel="stylesheet" href="resources/css/format.css">
-<link rel="stylesheet" href="resources/css/header.css">
-<link rel="stylesheet" href="resources/css/mydiary/mydiary.css">
-<link rel="stylesheet" href="resources/css/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/format.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mydiary/mydiary.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 <!-- js -->
-<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="resources/js/header.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 
 <style>
 * {
@@ -73,9 +74,12 @@ p.blank {
 						<div>
 							<a href="my-diary">My Diary</a>
 						</div>
-						<div>
-							<a href="isLogin">로그인</a>
-						</div>
+						<c:if test="${empty sessionScope.account.userid}">
+                        <div><a href="isLogin">로그인</a></div>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.account.userid}">
+                        <div><a href="logout">로그아웃</a></div>
+                        </c:if>
 					</div>
 				</section>
 				<nav id="top-nav">
@@ -254,11 +258,11 @@ p.blank {
 					<a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
 					<a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
 					<a href="https://www.ePrivacy.or.kr"><img
-						src="images/ePrivacy.png" alt="ePrivacy"></a> <a
-						href="https://www.kns.or.kr"><img src="images/kns.png"
+						src="${pageContext.request.contextPath}/images/ePrivacy.png" alt="ePrivacy"></a> <a
+						href="https://www.kns.or.kr"><img src="${pageContext.request.contextPath}/images/kns.png"
 						alt="kns"></a> <a href="https://www.mfds.go.kr"><img
-						src="images/foodsafe.png" alt="foodsafe"></a> <a
-						href="https://www.mohw.go.kr"><img src="images/bogun.png"
+						src="${pageContext.request.contextPath}/images/foodsafe.png" alt="foodsafe"></a> <a
+						href="https://www.mohw.go.kr"><img src="${pageContext.request.contextPath}/images/bogun.png"
 						alt="bogun"></a>
 				</div>
 				<div class="copyright">

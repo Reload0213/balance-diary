@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,9 +102,12 @@ p.blank {
 						<div>
 							<a href="my-diary">My Diary</a>
 						</div>
-						<div>
-							<a href="isLogin">로그인</a>
-						</div>
+						<c:if test="${empty sessionScope.account.userid}">
+                        <div><a href="isLogin">로그인</a></div>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.account.userid}">
+                        <div><a href="logout">로그아웃</a></div>
+                        </c:if>
 					</div>
 				</section>
 				<nav id="top-nav">
@@ -236,7 +240,7 @@ p.blank {
 				</select>
 				<div class="our-diary-board"></div>
 			</section>
-			<a href="write-diary">나의 식단 등록하기</a>
+			<a href="member/write-diary">나의 식단 등록하기</a>
 		</main>
 			<p class="blank"></p>
 		<footer>

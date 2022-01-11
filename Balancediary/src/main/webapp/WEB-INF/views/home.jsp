@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -960,8 +961,13 @@
                         <div><a href="#" class="h-open-btn"><i class="fas fa-bars"></i></a></div>
                     <div><a href="home"><h1>BalanceDiary</h1></a></div>
                     <div class="top-side">
-                        <div><a href="my-diary">My Diary</a></div>
+                        <div><a href="member/my-diary">My Diary</a></div>
+                        <c:if test="${empty sessionScope.account.userid}">
                         <div><a href="isLogin">로그인</a></div>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.account.userid}">
+                        <div><a href="logout">로그아웃</a></div>
+                        </c:if>
                     </div>
                 </section>
                 <nav id="top-nav">

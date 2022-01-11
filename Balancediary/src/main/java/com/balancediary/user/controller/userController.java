@@ -1,5 +1,8 @@
 package com.balancediary.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +22,14 @@ public class userController {
 
 		return "login";
 	}
+	
+	@PostMapping("login")
+	public String isLogin(userVO vo, HttpSession session) {
+		
+		return userService.login(vo, session);
+	}
+//		 String referer = request.getHeader("Referer");
+//		 return "redirect:"+ referer;
 
 	@GetMapping("isSignup")
 	public String isSignUp() {
@@ -32,4 +43,15 @@ public class userController {
 		
 		return "login";
 	}
+
+	@GetMapping("logout")
+	public String logoutMainGET(HttpServletRequest request) throws Exception{
+        HttpSession session = request.getSession();
+        
+        session.invalidate();
+        
+        return "redirect:/home";        
+        
+    }
+	
 }

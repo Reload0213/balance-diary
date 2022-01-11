@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,9 +155,12 @@ p.blank {
 						<div>
 							<a href="my-diary">My Diary</a>
 						</div>
-						<div>
-							<a href="isLogin">로그인</a>
-						</div>
+						<c:if test="${empty sessionScope.account.userid}">
+                        <div><a href="isLogin">로그인</a></div>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.account.userid}">
+                        <div><a href="logout">로그아웃</a></div>
+                        </c:if>
 					</div>
 				</section>
 				<nav id="top-nav">
@@ -215,15 +219,15 @@ p.blank {
 			</div>
 		</header>
 		<main>
-			<form action="index.html" method="post" class="loginForm">
+			<form action="login" method="post" class="loginForm">
 				<h2>Login</h2>
 				<div class="idForm">
-					<input type="text" class="id" placeholder="ID">
+					<input type="text" class="id" placeholder="ID" name="userid">
 				</div>
 				<div class="passForm">
-					<input type="password" class="pw" placeholder="PW">
+					<input type="password" class="pw" placeholder="PW" name="password">
 				</div>
-				<button type="button" class="btn" onclick="button()">LOG IN
+				<button type="submit" class="btn" id="login-btn">LOG IN
 				</button>
 				<div class="bottomText">
 					Don't you have ID? <a href="isSignup">sign up</a>
@@ -280,9 +284,7 @@ p.blank {
 	</div>
 
 	<script>
-      	let button = () => {
-        	alert('login Button !')
-        }
-      </script>
+		document.getElementId("login-btn").add
+     </script>
 </body>
 </html>

@@ -68,7 +68,7 @@
                     <div><a href="home"><h1>BalanceDiary</h1></a></div>
                     <div class="top-side">
                         <div><a href="my-diary">My Diary</a></div>
-                        <div><a href="login">로그인</a></div>
+                        <div><a href="isLogin">로그인</a></div>
                     </div>
                 </section>
                 <nav id="top-nav">

@@ -1,4 +1,4 @@
-package com.balancediary.myDiary.controller;
+package com.balancediary.diary.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

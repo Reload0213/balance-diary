@@ -155,7 +155,7 @@ p.blank {
 							<a href="my-diary">My Diary</a>
 						</div>
 						<div>
-							<a href="login">로그인</a>
+							<a href="isLogin">로그인</a>
 						</div>
 					</div>
 				</section>
@@ -226,7 +226,7 @@ p.blank {
 				<button type="button" class="btn" onclick="button()">LOG IN
 				</button>
 				<div class="bottomText">
-					Don't you have ID? <a href="signup">sign up</a>
+					Don't you have ID? <a href="isSignup">sign up</a>
 				</div>
 			</form>
 		</main>

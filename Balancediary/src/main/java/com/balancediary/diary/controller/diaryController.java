@@ -11,4 +11,10 @@ public class diaryController {
 		
 		return "diary-main";
 	}
+	
+	@GetMapping("write-diary")
+	public String writeDiary() {
+		
+		return "write-diary";
+	}
 }

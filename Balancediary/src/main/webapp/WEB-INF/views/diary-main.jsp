@@ -102,7 +102,7 @@ p.blank {
 							<a href="my-diary">My Diary</a>
 						</div>
 						<div>
-							<a href="login">로그인</a>
+							<a href="isLogin">로그인</a>
 						</div>
 					</div>
 				</section>
@@ -236,7 +236,7 @@ p.blank {
 				</select>
 				<div class="our-diary-board"></div>
 			</section>
-			<a href="">나의 식단 등록하기</a>
+			<a href="write-diary">나의 식단 등록하기</a>
 		</main>
 			<p class="blank"></p>
 		<footer>

@@ -74,7 +74,7 @@ p.blank {
 							<a href="my-diary">My Diary</a>
 						</div>
 						<div>
-							<a href="login">로그인</a>
+							<a href="isLogin">로그인</a>
 						</div>
 					</div>
 				</section>

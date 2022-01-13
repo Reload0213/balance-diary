@@ -1,6 +1,5 @@
 package com.balancediary.diary.vo;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class diaryVO {
 	private String mcontent;
@@ -39,6 +38,10 @@ public class diaryVO {
 	public void setMncontent(String mncontent) {
 		this.mncontent = mncontent;
 	}
+	
+	
+	
+	
 	
 	
 }

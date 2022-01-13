@@ -54,10 +54,15 @@ public class userController {
 	@GetMapping("logout")
 	public String logoutMainGET(HttpServletRequest request) throws Exception{
         HttpSession session = request.getSession();
-        
+        String referer = request.getHeader("Referer");
+		String path = referer.substring(21, referer.length());
+		StringTokenizer st = new StringTokenizer(path, "/");
+		path = st.nextToken();
+		path = st.nextToken();
+		
         session.invalidate();
         
-        return "redirect:/home";        
+        return "redirect:/"+path;        
         
     }
 	

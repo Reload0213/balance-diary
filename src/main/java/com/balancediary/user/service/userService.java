@@ -20,7 +20,6 @@ public class userService {
 		if(vo1 != null) {
 			session.setAttribute("account", vo1);
 			path = (String)session.getAttribute("path");
-			System.out.println(path);
 		} else {
 			path = "login";
 		}

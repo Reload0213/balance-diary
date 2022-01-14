@@ -4,6 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.channels.WritableByteChannel;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
@@ -13,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,19 +65,6 @@ public class diaryController {
 		return "my-diary";
 	}
 
-	@GetMapping("setdiary")
-	public String setdiary(@RequestParam("mcontent") MultipartFile file) throws Exception {
-		// 여러 체킹 방식이 있지만(ex 만약 파일 용량이 0이라면)
-		// 아래는 파일의 이름 자체가 만약 비어있다면
-		if (!file.getOriginalFilename().isEmpty()) {
-			// 해당 경로로 파일을 전송(저장)시키겠다.
-			file.transferTo(new File("C:\\diaryfile", file.getOriginalFilename()));
-		} else {
-			System.out.println("에러 발생");
-		}
-
-		return "testdiary";
-	}
 
 	@PostMapping("testdiary")
 	public String signUp(diaryVO vo) {
@@ -77,22 +73,69 @@ public class diaryController {
 		return "testdiary";
 	}
 
+	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
 	@ResponseBody
-	@PostMapping("/profileImage")
-	public void summer_image(MultipartFile file, HttpServletRequest request,
-	    HttpServletResponse response) throws Exception {
-		   
-	  response.setContentType("text/html;charset=utf-8");
-	  String uploadPath = "${pageContext.request.contextPath}/resources/images/";
-	  //String uploadPath = "/Users/hongmac/Documents/WebProject/ImFind/src/main/webapp/resources/el/images/";
-	      
-	  PrintWriter out = response.getWriter();
-	  String originalFileExtension = file.getOriginalFilename(); 
-	  String storedFileName = UUID.randomUUID().toString().replaceAll("-", "");// + originalFileExtension
+	public ResponseEntity<Map<String, String>> uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
+		
+		//JsonObject jsonObject = new JsonObject();
+		HashMap<String, String> map = new HashMap<String, String>();
+		
+		
+		String fileRoot = "C:\\temp\\";	//저장될 외부 파일 경로
+		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
+				
+		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		
+		File targetFile = new File(fileRoot + savedFileName);	
+		
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
+			//jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
+			//jsonObject.addProperty("responseCode", "success");
+				
+			
+			
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+			//jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		
+		//jsonObject.addProperty("aaa", "aaa");
+		ResponseEntity<Map<String, String>> entity = new ResponseEntity<Map<String, String>>(map,HttpStatus.OK);
+		map.put("url", "/temp/"+savedFileName);
+		map.put("responseCode", "success");
+	
+		//return jsonObject;
+		
+		return entity;
+	}
+	
+	@GetMapping("/temp")
+	public void download(HttpServletResponse response) {
+		
+		try {
+			String path = "C:/Temp/**";
+			
+			Path file = Paths.get(path);
+			// 1. 헤더 작성
+			response.setHeader("Content-Disposition", "attachment;filename"+file.getFileName());
+			// 2. 파일 정보 및 상태 불러오기
+			FileChannel fc = FileChannel.open(file, StandardOpenOption.READ);
+			
+			// 3. response로 file의 데이터를 전송하는 로직 만들기
+			WritableByteChannel outputChannel = Channels.newChannel(response.getOutputStream());
+			
+			// 4. file에서 response로 데이터 전송
+			// 0사이즈 부터 fc.size()까지
+			fc.transferTo(0, fc.size(), outputChannel);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-	  System.out.println("storedFileName : " + storedFileName);
-	  file.transferTo(new File(uploadPath+storedFileName));
-	  out.println("/imfind/upload/"+storedFileName);
-	   out.close();
-}
+	
 }

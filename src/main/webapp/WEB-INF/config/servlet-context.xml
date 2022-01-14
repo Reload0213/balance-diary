@@ -35,6 +35,7 @@
 
 	<!-- 정적 파일 경로 세팅 -->
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/temp/**" location="c:/temp/" />
 
 	<interceptors>
 		<interceptor>

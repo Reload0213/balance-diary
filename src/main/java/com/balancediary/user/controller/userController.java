@@ -26,9 +26,10 @@ public class userController {
 		String referer = request.getHeader("Referer");
 		String path = referer.substring(21, referer.length());
 		StringTokenizer st = new StringTokenizer(path, "/");
-		path = st.nextToken();
-		path = st.nextToken();
-			
+		
+			path = st.nextToken();
+			path = st.nextToken();
+		
 		session.setAttribute("path", path);
 		return "login";
 	}
@@ -56,10 +57,10 @@ public class userController {
         HttpSession session = request.getSession();
         String referer = request.getHeader("Referer");
 		String path = referer.substring(21, referer.length());
-		StringTokenizer st = new StringTokenizer(path, "/");
-		path = st.nextToken();
-		path = st.nextToken();
-		
+		StringTokenizer st = new StringTokenizer(path, "/");		
+		while (st.hasMoreTokens()) {
+			path = st.nextToken();
+		}
         session.invalidate();
         
         return "redirect:/"+path;        

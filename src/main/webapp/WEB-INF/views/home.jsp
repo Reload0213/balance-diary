@@ -1501,9 +1501,6 @@
         function handleProgress() {
                 const percent = (video.currentTime / video.duration) * 100;
                 progressBar.style.flexBasis = `${percent}%`;
-                if(percent = 100){
-                    nextTab();
-                    }
                 }
             video.addEventListener('timeupdate', handleProgress);       
        

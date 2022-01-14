@@ -27,6 +27,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -113,18 +114,18 @@ public class diaryController {
 		return entity;
 	}
 	
-	@GetMapping("/temp")
-	public void download(HttpServletResponse response) {
+	@GetMapping("/temp/{filename}.{ext}")
+	public void download(HttpServletResponse response, @PathVariable String filename, @PathVariable String ext) {
 		
 		try {
-			String path = "C:/Temp/**";
+			String path = "C:/Temp/"+filename+"."+ext;
 			
 			Path file = Paths.get(path);
 			// 1. 헤더 작성
 			response.setHeader("Content-Disposition", "attachment;filename"+file.getFileName());
+			response.setContentType("image/jpeg");
 			// 2. 파일 정보 및 상태 불러오기
 			FileChannel fc = FileChannel.open(file, StandardOpenOption.READ);
-			
 			// 3. response로 file의 데이터를 전송하는 로직 만들기
 			WritableByteChannel outputChannel = Channels.newChannel(response.getOutputStream());
 			
